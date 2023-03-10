@@ -48,12 +48,12 @@ conda install --yes --file requirements.txt
 ```
 
 ### Run the attack
-- To excecute L1 attack on Bosphorus dataset and PointNet and save the adversarial absolute phase
+- To excecute L1 attack on Bosphorus dataset and PointNet and save the adversarial point cloud.
 ```
 python3 Test_CW_SL.py --dist_function L1Loss --dataset Bosphorus --whether_1d True --model PointNet --whether_renormalization True --whether_resample True
 ```
 
-- To get fringe images (adversarial illumination) from the above generated absolute phase. The clean point cloud and adversarial point cloud are needed.
+- To get fringe images (adversarial illumination) from the above generated adversarial point cloud. The clean point cloud and adversarial point cloud are needed.
 ```
 python get_adv_illumination --normal_pc test_face_data/person1.txt --adv_pc test_face_data/adv_person1_untargeted_L1Loss_5.txt --outfolder test_face_data/person1/adversarial_fringe
 ```
