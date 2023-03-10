@@ -43,6 +43,9 @@ cd SLAttack
 ```
 - Dependencies:  
 We recommend running this repository using [Anaconda](https://docs.anaconda.com/anaconda/install/). 
+```
+conda install --yes --file requirements.txt
+```
 
 ### Run the attack
 - To excecute L1 attack on Bosphorus dataset and PointNet and save the adversarial absolute phase
