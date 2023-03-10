@@ -38,27 +38,25 @@ Official Implementation of our StructuredLightAttack paper. We extend the C&W at
 ### Installation
 - Clone this repo:
 ``` 
-git clone https://github.com/eladrich/pixel2style2pixel.git
-cd pixel2style2pixel
+git clone https://github.com/PolyLiYJ/SLAttack.git
+cd SLAttack
 ```
 - Dependencies:  
 We recommend running this repository using [Anaconda](https://docs.anaconda.com/anaconda/install/). 
-All dependencies for defining the environment are provided in `environment/psp_env.yaml`.
 
 ### Run the attack
-- To Excecute L1 attack on Bosphorus dataset and PointNet and save the adversarial absolute phase
+- To excecute L1 attack on Bosphorus dataset and PointNet and save the adversarial absolute phase
 ```
 python3 Test_CW_SL.py --dist_function L1Loss --dataset Bosphorus --whether_1d True --model PointNet --whether_renormalization True --whether_resample True
 ```
 
-- To get fringe images from absolute phase
+- To get fringe images (adversarial illumination) from the above generated absolute phase. The clean point cloud and adversarial point cloud are needed.
 ```
-
 python get_adv_illumination --normal_pc test_face_data/person1.txt --adv_pc test_face_data/adv_person1_untargeted_L1Loss_5.txt --outfolder test_face_data/person1/adversarial_fringe
 ```
 
 ## Citation
-If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2008.00951">Encoding in Style: a StyleGAN Encoder for Image-to-Image Translation</a>:
+If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2205.13412">Physical-World Optical Adversarial Attacks on 3D Face Recognition</a>:
 
 ```
 @inproceedings{
