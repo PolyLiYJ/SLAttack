@@ -13,6 +13,8 @@
 ## Description   
 Official Implementation of our StructuredLightAttack paper. We extend the C&W attack which includes the 3D structured light reconstruction process. We only include the attack code here without the 3D structured light rebuild code. For 3D structured light rebuild code, you can refer to https://github.com/phreax/structured_light.git. 
 
+[![Watch the video]https://youtu.be/zwAXvlh70yQ]
+
 ## Table of Contents
 - [CVPR2023: Physical-World Optical Adversarial Attacks on 3D Face Recognition](#cvpr2023-physical-world-optical-adversarial-attacks-on-3d-face-recognition)
   - [Description](#description)
