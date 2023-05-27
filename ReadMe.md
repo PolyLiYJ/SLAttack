@@ -13,7 +13,7 @@
 ## Description   
 Official Implementation of our StructuredLightAttack paper. We extend the C&W attack which includes the 3D structured light reconstruction process. We only include the attack code here without the 3D structured light rebuild code. For 3D structured light rebuild code, you can refer to https://github.com/phreax/structured_light.git. 
 
-### Watch the youtube video here
+### Watch the demo video here (please set the video resolution as 1080p)
 [![Watch the video](https://img.youtube.com/vi/zwAXvlh70yQ/hqdefault.jpg)](https://youtu.be/zwAXvlh70yQ)
 
 ## Table of Contents
