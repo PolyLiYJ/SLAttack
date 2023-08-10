@@ -15,7 +15,6 @@ from CW_utils.dist_utils import ChamferDist, ChamferkNNDist
 from math import exp,pow,sqrt
 from Visualization import showXYZ, mesh, plot,  gaussBlur
 import cv2
-thres = 0.2
 device = torch.device("cpu")
 out_root = 'test_face_data'
 
@@ -217,227 +216,8 @@ class CW:
         #Kp = np.dot([[0.25,0,0],[0,0.25,0],[0,0,1]],Kp)
         self.Ap = np.dot(self.Kp, np.append(self.Rp_1, self.Tp_1,axis = 1))
 
-        
-
-    def target_attack(self, unnormalized_data,label, face_area):
-        """Attack on given data to target.
-        Args:
-            data (torch.FloatTensor): victim data, [B, num_points, 3]
-            target (torch.LongTensor): target output, [B]
-        """
-        # load camera extric matrix
-        RTc = scio.loadmat('test_face_data/CamCalibResult.mat');
-        Kc = RTc['KK']
-        Rc_1 = RTc['Rc_1']
-        Tc_1 = RTc['Tc_1']
-        Kc = np.dot([[0.25,0,0],[0,0.25,0],[0,0,1]],Kc) #resize the image
-        print(np.append(Rc_1, Tc_1,axis = 1))
-        Ac = np.dot(Kc, np.append(Rc_1, Tc_1,axis = 1))
-        print(Ac)
-        print("Kc:",Kc)
-        print("Rc",Rc_1)
-        # load projector extric matrix
-        RTp = scio.loadmat('test_face_data/PrjCalibResult.mat');
-        Kp = RTp['KK']
-        Rp_1 = RTp['Rc_1']
-        Tp_1 = RTp['Tc_1']
-        Kp = np.dot([[0.25,0,0],[0,0.25,0],[0,0,1]],Kp)
-        Ap = np.dot(Kp, np.append(Rp_1, Tp_1,axis = 1))
-        print(Ap)
-        
-        
-        Xws = unnormalized_data[:,0]
-        Yws = unnormalized_data[:,1]
-        Zws = unnormalized_data[:,2]
-        # showXYZ(unnormalized_data,"yanjie.png")
-        # img_x   = unnormalized_data[:,3]
-        # img_y   = unnormalized_data[:,4]
-        
-        height = int(180)
-        width = int(320)                                                                
-        n = 4 # digital number of Gray code
-
-        area = np.zeros((height, width))
-        y_p = np.full((height, width), np.nan)
-        count_xy = 0 
-        xcol = []
-        ycol = []
-        
-        for i in range(0,unnormalized_data.shape[0]):
-            if np.isnan(Xws[i]) == False:
-                count_xy = count_xy+1;
-                point = np.array([Xws[i],Yws[i],Zws[i],1])
-                usv = np.dot(Ap, point.T) # the 
-                usv_c = np.dot(Ac, point.T)
-                # vertical coordinate
-                x = round(usv_c[1]/usv_c[2])
-                # horizontal coordinate
-                y = round(usv_c[0]/usv_c[2])
-                print(x,y)
-                xcol.append(x)
-                ycol.append(y)
-                y_p[x,y] = usv[0]/usv[2] # the horizontal coordinate in projector for (x,y) pixel in the captured image
-                area[x,y] = 1
-        
-        xcol = np.array(xcol)
-        ycol = np.array(ycol)
-        face_area = np.array([np.min(ycol),np.min(xcol), np.max(ycol)-np.min(ycol), np.max(xcol)-np.min(xcol)],dtype=np.uint32)
-
-        fig, ax = plt.subplots()
-        ax.imshow(area)
-        rect = patches.Rectangle((face_area[0],face_area[1]), face_area[2], face_area[3], linewidth=1, edgecolor='r', facecolor='none')
-        ax.add_patch(rect)
-        fig.savefig("face_area.png")  
-
-        B =1
-                         
-        # weight factor for budget regularization
-        lower_bound = np.zeros((B,))
-        upper_bound = np.ones((B,)) * self.max_weight
-        current_weight = np.ones((B,)) * self.init_weight
-        
-            
-        
-        
-        # perform binary search
-        
-        o_bestdist = np.array([1e10] * B)
-
-        for binary_step in range(self.binary_step):
-            
-            bestdist = np.array([1e10] * B)
-            bestscore = np.array([-1] * B)
-            adv_loss = torch.tensor(0.).cuda()
-            dist_loss = torch.tensor(0.).cuda()
-
-            phaX_rebuild = torch.from_numpy(y_p / width).to(device,dtype=torch.float).requires_grad_(True)
-            Ac = torch.tensor(Ac, dtype = torch.float, requires_grad=False).to(device)
-            Ap = torch.tensor(Ap, dtype = torch.float, requires_grad=False).to(device)    
-            
-            opt = optim.Adam([phaX_rebuild], lr=self.attack_lr, weight_decay=0.)  
-
-            # one step in binary search
-            for iteration in range(self.num_iter):
-                
-                if binary_step==0 and iteration==0:
-                    ori_phaX_rebuild = phaX_rebuild.clone().detach().requires_grad_(False) #[0,1]
-                
-                # set pha in [max(0,pha-delta), max(1,pha+delta)]
-                phaX_rebuild2 = clamp1(phaX_rebuild, ori_phaX_rebuild)
-                y_p_rebuild = phaX_rebuild2 * width
-
-                # mesh(face_area, y_p_rebuild.cpu().detach().numpy(), "y_p_rebuild.png")
-
-                xyz_rebuild = reconstruct3D.apply(y_p_rebuild,face_area, Ac, Ap)
-             
-                # xyz_rebuild_face = xyz_rebuild3[xyz_rebuild3[:,2]<200]
-                if iteration % 10==0:
-                    filename = f"Adv_point_cloud_{iteration}.png"
-                    print(f"save {filename} of iteration {iteration}")
-                    showXYZ(xyz_rebuild.cpu().detach().numpy(),filename)
-                
-                adv_data = xyz_rebuild[:,0:3].unsqueeze(0).permute(0,2,1) #[B,3,K]
-                # remove nan
-                # list = range(adv_data.shape[2])
-                # list_u_v = [[vc, uc]  for uc in range(face_area[0],face_area[0]+face_area[2]) 
-                #     for vc in range(face_area[1],face_area[1]+face_area[3]) ]
-                # list_ = []
-                # for num in list:
-                #     if torch.isnan(adv_data[0,0, num])==False and \
-                #         torch.isnan(adv_data[0,1, num])==False  and \
-                #             torch.isnan(adv_data[0,2, num])==False:
-                #                 list_.append(num)
-                #     # rand = random.sample(list_,4000)
-                # adv_data =  adv_data[:,:,list_]
-                # list_u_v = np.array(list_u_v)
-                # list_u_v = list_u_v[list_,:]
-                # print(adv_data.shape)
-
-                # compute loss and backward
-                # dist_loss = self.dist_func(pha_masked, ori_pha_masked,
-                #                         torch.from_numpy(
-                #                             current_weight))
-                dist_loss = torch.sqrt(torch.nansum((phaX_rebuild-ori_phaX_rebuild.detach()) ** 2, dim=[0,1]))
-                
-                if range(self.num_iter==0):
-                    ori_data = self.normalization(adv_data) # [B,3,K]
-                    ori_data.requires_grad = False
-                
-                #if target
-                EoTloss = True
-                target =  torch.tensor(np.array([label]), dtype=torch.float).to(device).requires_grad(False)
-                #renormalization, input [B,K,3]
-                adv_data_normed = self.normalization(adv_data) 
-                logits,_,_ = self.model(adv_data_normed)
-                pred = torch.argmax(logits, dim=1)  
-                if EoTloss:
-                    adv_loss_list = torch.empty(10)
-                    for i in range(10):
-                        adv_data = self.randomRotation(self, adv_data, ori_data)
-                        logits,_,_ = self.model(adv_data_normed)
-                        adv_loss_list[i] = self.adv_func(logits, target).mean()             
-                    adv_loss = torch.mean(adv_loss_list)
-                    loss =  adv_loss + current_weight * dist_loss
-                else:
-                    adv_loss = self.adv_func(logits,target).mean()           
-                    loss =  adv_loss + current_weight * dist_loss
-                    
-                opt.zero_grad()
-                loss.backward()
-                opt.step()    
-                
-                dist_val = [dist_loss.detach().cpu().numpy()]
-                pred_val = pred.detach().cpu().numpy()  # [B]
-                input_val = adv_data.detach().cpu().numpy()  # [B, 3, K]
-                # update
-                for e, (dist, pred, ii) in \
-                        enumerate(zip(dist_val, pred_val,input_val)):
-                    # if dist < bestdist[e] and pred != ori_label:
-                    if dist < bestdist[e] and pred == target:
-                        bestdist[e] = dist
-                        bestscore[e] = pred
-                    # if dist < o_bestdist[e] and pred != ori_label:
-                    if dist < o_bestdist[e] and pred == target:
-                        o_bestdist[e] = dist
-                        o_bestattack = ii     
-                                    
-                if iteration % 10 == 0:
-                    print("binary step:", binary_step, "   iteration:", iteration)
-                    # print("grad",torch.nansum(pha_wrapped.grad[face_area[1]:face_area[1]+face_area[3],face_area[0]:face_area[0]+face_area[2]]).item())
-                    print("loss:", loss.item(), " dist loss:", dist_loss.item(), " adv_loss:" ,adv_loss.item())
-                    print("pred", pred_val)
-                    
-            for e, label in enumerate([target.cpu().numpy()]):
-                if bestscore[e] == label and bestscore[e] != -1 and bestdist[e] <= o_bestdist[e]:
-                    # success
-                    lower_bound[e] = max(lower_bound[e], current_weight[e])
-                    current_weight[e] = (lower_bound[e] + upper_bound[e]) / 2.
-                else:
-                    # failure
-                    upper_bound[e] = min(upper_bound[e], current_weight[e])
-                    current_weight[e] = (lower_bound[e] + upper_bound[e]) / 2.
-
-                #mesh(face_area, pha_wrapped.cpu().detach().numpy())
-
-            torch.cuda.empty_cache()
-
-        # end of CW attack
-        # fail to attack some examples
-        # just assign them with last time attack data
-
-
-        # return final results
-        success_num = (lower_bound > 0.).sum()
-        if success_num == 0:
-            fail_idx = (lower_bound == 0.)
-            o_bestattack = input_val[fail_idx]
-        print('Successfully attack {}/{}   pred: {}'.format(success_num, B, pred))
-        print(np.shape(o_bestattack))
-        pc = o_bestattack.transpose((1,0))
-        pc =  np.hstack((pc,list_u_v))
-        return pc, success_num, y_p_rebuild.cpu().detach().numpy()
     
-    def untarget_attack_optimize_on_yp(self, unnormalized_data,label, outfolder, args):
+    def attack_optimize_on_yp(self, unnormalized_data,label, outfolder, args):
         
         """Attack on given data to target.
         Args:
@@ -475,19 +255,9 @@ class CW:
         xcol = np.array(xcol)
         ycol = np.array(ycol)
         face_area = np.array([np.min(ycol),np.min(xcol), np.max(ycol)-np.min(ycol), np.max(xcol)-np.min(xcol)],dtype=np.uint32)
-        # print(face_area)
-        # fig, ax = plt.subplots()
-        # ax.imshow(area)
-        # rect = patches.Rectangle((face_area[0],face_area[1]), face_area[2], face_area[3], linewidth=1, edgecolor='r', facecolor='none')
-        # ax.add_patch(rect)
-        # fig.savefig("face_area.png") 
-        
-        plot(y_p/self.width, f"{out_root}/{outfolder}/y_p.png") 
-        showXYZ(unnormalized_data[:,0:3], f"{out_root}/{outfolder}/original_before_rebuild.png", face_area)
-        print(f"save figure at output/{outfolder}/{self.dist_func}/original_before_rebuild.png")
+
         
         atten_map = self.get_attention_map(face_area,  mask = area, out_root=out_root, outfolder=outfolder, y_p = y_p,)
-        plot(atten_map, f"{out_root}/{outfolder}/atten_map.png") 
         atten_map = torch.from_numpy(atten_map).to(device)
         atten_map.requires_grad = False
         B = 1 # batchsize
@@ -523,8 +293,8 @@ class CW:
             ori_phaX_rebuild = torch.tensor(y_p / self.width, dtype=torch.float).to(device)
             ori_phaX_rebuild.requires_grad = False
             
-            ori_label = torch.tensor(np.array([label]), dtype=torch.float).to(device)
-            ori_label.requires_grad= False
+            attacked_label = torch.tensor(np.array([label]), dtype=torch.float).to(device)
+            attacked_label.requires_grad = False
             # one step in binary search
             for iteration in range(self.num_iter):
                 phaX_rebuild_add_noise = phaX_rebuild + Noise
@@ -537,17 +307,10 @@ class CW:
 
                 Rebuild3D = reconstruct3D.apply
                 xyz_rebuild = Rebuild3D(y_p_rebuild,face_area, Ac, Ap)
-                #xyz_rebuild = rebuild3D(y_p_rebuild,face_area, Ac, Ap)
-                if binary_step == 0 and iteration == 0:
-                    showXYZ(xyz_rebuild[:,0:3].cpu().detach().numpy(), f"{out_root}/{outfolder}/original.png", face_area = face_area)
-                    print(f"{out_root}/{outfolder}/original.png")
-                
-                # xyz_rebuild = rebuild3D(y_p_rebuild,face_area, Ac, Ap)
-                # pha = y_p_rebuild.detach().cpu().numpy()
-                # mesh(face_area, pha, "output/Pha_rebuild.png")
+
                 adv_data = xyz_rebuild[:,0:3].permute(1,0).to(device) #[3,K]                
 
-                # align the point net with the camera
+                # align the point cloud with the camera by rotate the point cloud, see equation
                 KcRc = torch.tensor(np.dot(self.Kc,self.Rc_1), requires_grad=False).float().to(device)
                 adv_data_aligned = torch.matmul(KcRc, adv_data).unsqueeze(0)   #[B,3,K]
                 
@@ -564,7 +327,9 @@ class CW:
                 
                 # single direction constraint   , rotate the point cloud
                 adv_z = adv_data_aligned[0,2,:].unsqueeze(0).unsqueeze(1) #[B,1,K]
+                # add noise to the rotated point cloud
                 adv_data_cat = torch.cat((ori_data_aligned[0,0:2,:].unsqueeze(0), adv_z), dim = 1)
+                # recover the point cloud
                 inv_KcRc = torch.tensor(np.matmul(np.linalg.inv(self.Rc_1), np.linalg.inv(self.Kc)), requires_grad=False).float().to(device)
                 adv_data_backed = torch.matmul(inv_KcRc, adv_data_cat[0]).unsqueeze(0)
                 
@@ -591,15 +356,12 @@ class CW:
                     for i in range(10):
                         adv_data_rotated = self.randomRotation(adv_data_normed, ori_data_normed)
                         logits,_,_ = self.model(adv_data_rotated)
-                        adv_loss_list[i] = self.adv_func(logits, ori_label ).mean()             
+                        adv_loss_list[i] = self.adv_func(logits, attacked_label ).mean()
                     adv_loss = torch.mean(adv_loss_list)
-                    loss = dist_loss + torch.mul( adv_loss , current_weight[0])
+                    loss = adv_loss + torch.mul( dist_loss , current_weight[0])
                 else:
                     logits,_,_ = self.model(adv_data_normed)
-                    pred = torch.argmax(logits, dim=1)  
-                    softmax = torch.nn.Softmax(dim=1)
-                    score = softmax(logits)[0,int(label)] 
-                    adv_loss = self.adv_func(logits,ori_label ).mean()           
+                    adv_loss = self.adv_func(logits,attacked_label).mean()
                     loss = adv_loss + torch.mul(dist_loss , current_weight[0]) 
                     
                 pred = torch.argmax(logits, dim=1)  
@@ -607,7 +369,7 @@ class CW:
                 score = softmax(logits)[0,int(label)]  
    
                 if binary_step == 0 and iteration == 0:
-                        print("The reconstuct one prediction is :", pred.item())
+                    print("The reconstuct one prediction is :", pred.item())
                 
                 loss.backward()
                 with torch.no_grad():
@@ -622,29 +384,23 @@ class CW:
                 # update
                 for e, (dist, pred, ii) in \
                         enumerate(zip(dist_val, pred_val,input_val)):
-                    # if dist < bestdist[e] and pred != ori_label:
-                    if dist < bestdist[e] and pred != ori_label and adv_val[0]<thres:
+                    if args.whether_target == True:
+                        flag = (pred == attacked_label)
+                    else:
+                        flag = (pred != attacked_label)
+                    if dist < bestdist[e] and flag:
                         bestdist[e] = dist
                         bestscore[e] = score_val
-                    # if dist < o_bestdist[e] and pred != ori_label:
-                    if dist < o_bestdist[e] and pred != ori_label and adv_val[0]<thres:
+                    if dist < o_bestdist[e] and flag:
                         o_bestdist[e] = dist
                         o_bestattack = ii
                         o_best_pred = pred
                         o_best_yp_rebuild = y_p_rebuild.detach().cpu().numpy()
-                        filename = f"{out_root}/{outfolder}/{self.dist_func}/Adv_point_cloud_{pred_val[0]}_{adv_val[0]}_{dist_val[0]}.png"
-                        print(f"binary search round {binary_step}, iteration {iteration},  adv loss: {adv_val}, dist loss: {dist_val}")
-                        print(f"save {filename}")
-                        showXYZ(o_bestattack, filename, face_area = face_area)
-                        #np.savetxt(f"{out_root}/{outfolder}/{self.dist_func}/Best_attack_{pred_val[0]}_{adv_val[0]}_{dist_val[0]}.txt", o_bestattack)
-                        #np.savetxt(f"{out_root}/{outfolder}/{self.dist_func}/Best_yp_{pred_val[0]}_{adv_val[0]}_{dist_val[0]}.txt", o_best_yp_rebuild)
-                        # adjust weight factor                
+
                 # mesh(face_area, pha_wrapped.cpu().detach().numpy())
                 if iteration % 10 == 0:
                     print("binary step:", binary_step, "  iteration:", iteration, "current weight:", current_weight[0])
-                    # print("grad",torch.nansum(pha_wrapped.grad[face_area[1]:face_area[1]+face_area[3],face_area[0]:face_area[0]+face_area[2]]).item())
-                    print("loss:", loss.item(), " dist loss:", dist_loss.item(),  "adv_loss:" ,adv_loss.item(), "pred", pred_val)
-                   # showXYZ(xyz_rebuild.detach().cpu().numpy(), f"{out_root}/{self.dist_func}/Xyz_rebuild_{binary_step}_{iteration}.png")
+                    print("loss: %2.2f, dist loss: %2.2f, adv_loss: %2.2f , pred: %d" % ( loss.item(),dist_loss.item(), adv_loss.item(),  pred_val))
                     
                 if self.abort_early and not iteration % (self.num_iter // 10):
                     if loss.item() > pre_loss * 0.999:
@@ -652,16 +408,14 @@ class CW:
                     pre_loss = loss.detach().cpu().numpy()
 
                     
-            for e, label in enumerate(ori_label.cpu().numpy()):
-                if bestscore[e] != label and bestscore[e] != -1 and bestdist[e] <= o_bestdist[e]:
+            for e, label in enumerate(attacked_label.cpu().numpy()):
+                if bestscore[e] != -1 and bestdist[e] <= o_bestdist[e] :
                     # success, increase the weight,
                     lower_bound[e] = max(lower_bound[e], current_weight[e])
                     current_weight[e] = (lower_bound[e] + upper_bound[e]) / 2.
                 else:
                     upper_bound[e] = min(upper_bound[e], current_weight[e])
                     current_weight[e] = (lower_bound[e] + upper_bound[e]) / 2.
-                    # failure
-            #torch.cuda.empty_cache()
 
         # end of CW attack
         # fail to attack some examples
@@ -677,21 +431,23 @@ class CW:
             print('Successfully attack {}/{}   pred: {}  best dist loss : {}, best weight: {} '.format(success_num, B, o_best_pred, o_bestdist[0], current_weight[0] ))
         return o_bestattack, success_num, o_best_yp_rebuild, o_best_pred
     
-    """Attack on given data to target.
+    """Attack the point cloud on given data to target.
     Args:
-        data (torch.FloatTensor): victim data, [B, num_points, 3]
-        target (torch.LongTensor): target output, [B]
+        unnormalized_data (torch.FloatTensor): victim data, [B, num_points, 3]
+        label (torch.LongTensor): target label for target attack or original label for untorget attack, [B]
+        outfolder: The output folder
+        args: argments
     """  
-    def untarget_attack_optimize_on_pointcloud(self, unnormalized_data,label, outfolder, args):
+    def attack_optimize_on_pointcloud(self, unnormalized_data,label, outfolder, args):
         # load camera extric matrix
-        RTc = scio.loadmat('test_face_data/CamCalibResult.mat');
+        RTc = scio.loadmat('test_face_data/CamCalibResult.mat')
         Kc = RTc['KK']   # camera intrinsics
         Rc_1 = RTc['Rc_1']
         Tc_1 = RTc['Tc_1']
         Kc = np.dot([[0.5,0,0],[0,0.5,0],[0,0,1]],Kc) #resize the image
         Ac = np.dot(Kc, np.append(Rc_1, Tc_1,axis = 1))
         # load projector extric matrix
-        RTp = scio.loadmat('test_face_data/PrjCalibResult.mat');
+        RTp = scio.loadmat('test_face_data/PrjCalibResult.mat')
         Kp = RTp['KK']   # projector intrinsics
         Rp_1 = RTp['Rc_1']
         Tp_1 = RTp['Tc_1']
@@ -710,11 +466,11 @@ class CW:
         count_xy = 0 
         xcol = []
         ycol = []
-        if self.dist_func == 'ChamferkNN':
+        if self.dist_func == 'ChamferkNN_pt':
             dist_func = ChamferkNNDist()
-        elif self.dist_func == 'Chamfer':
+        elif self.dist_func == 'Chamfer_pt':
             dist_func = ChamferDist()  
-        elif self.dist_func == 'L2Dist':
+        elif self.dist_func == 'L2Loss_pt':
             dist_func = L2Dist() 
         
         #read data and compute corresponding camera and projector cooridates
@@ -736,7 +492,6 @@ class CW:
         xcol = np.array(xcol)
         ycol = np.array(ycol)
         face_area = np.array([np.min(ycol),np.min(xcol), np.max(ycol)-np.min(ycol), np.max(xcol)-np.min(xcol)],dtype=np.uint32)
-        print(face_area)
 
         B = 1 # batchsize
                          
@@ -757,10 +512,8 @@ class CW:
         Ac = torch.tensor(Ac, dtype = torch.float, requires_grad=False).to(device)
         Ap = torch.tensor(Ap, dtype = torch.float, requires_grad=False).to(device)    
         xyz_rebuild = reconstruct3D.apply(y_p_rebuild,face_area, Ac, Ap) #[K,3]
-        showXYZ(xyz_rebuild,f"{out_root}/{outfolder}/xyz_rebuild.png", face_area)
         KcRc = np.dot(Kc,Rc_1)
-        
-        
+
         for binary_step in range(self.binary_step):
             
             bestdist = np.array([1e10] * B)
@@ -782,7 +535,7 @@ class CW:
                 # single direction constraint   
                 # dist_loss = dist_func(adv_data_cat.permute((0,2,1)), ori_data_normed.permute((0,2,1)))
                 dist_loss = dist_func(adv_data_normed.permute((0,2,1)), ori_data_normed.permute((0,2,1)))
-                ori_label = torch.tensor(np.array([label]), dtype=torch.float).to(device).requires_grad_(False)
+                attacked_label = torch.tensor(np.array([label]), dtype=torch.float).to(device).requires_grad_(False)
                 if args.whether_renormalization == True: 
                     adv_data_normed,_,_ = self.normalize(adv_data_normed)
                 if args.whether_3Dtransform == True:
@@ -792,17 +545,17 @@ class CW:
                         #renormalization
                         adv_data_rotated_renormed,_,_ = self.normalize(adv_data_rotated)
                         logits,_,_ = self.model(adv_data_rotated_renormed)
-                        adv_loss_list[i] = self.adv_func(logits, ori_label ).mean()             
+                        adv_loss_list[i] = self.adv_func(logits, attacked_label ).mean()
                     adv_loss = torch.mean(adv_loss_list)
                     loss = dist_loss + torch.mul( adv_loss , current_weight[0])
                 else:
-                    
                     logits,_,_ = self.model(adv_data_normed)
-                    pred = torch.argmax(logits, dim=1)  
-                    softmax = torch.nn.Softmax(dim=1)
-                    score = softmax(logits)[0,int(label)] 
-                    adv_loss = self.adv_func(logits,ori_label ).mean()           
+                    adv_loss = self.adv_func(logits,attacked_label).mean()
                     loss = adv_loss + torch.mul(dist_loss , current_weight[0])
+
+                pred = torch.argmax(logits, dim=1)
+                softmax = torch.nn.Softmax(dim=1)
+                score = softmax(logits)[0,int(label)]
                     
                 loss.backward()
                 opt.step()    
@@ -817,24 +570,24 @@ class CW:
                 # update
                 for e, (dist, pred, ii) in \
                         enumerate(zip(dist_val, pred_val,input_val)):
-                    # if dist < bestdist[e] and pred != ori_label:
-                    if dist < bestdist[e] and pred != ori_label and adv_val[0]<thres:
+                    if args.whether_target == True:
+                        flag = (pred == attacked_label)
+                    else:
+                        flag = (pred != attacked_label)
+                    if dist < bestdist[e] and flag:
                         bestdist[e] = dist
                         bestpred[e] = pred
                         bestscore[e] = score_val
                     # if dist < o_bestdist[e] and pred != ori_label:
-                    if dist < o_bestdist[e] and pred != ori_label and adv_val[0]<thres:
+                    if dist < o_bestdist[e] and flag:
                         o_bestdist[e] = dist
                         o_bestattack = ii
                         pc = o_bestattack.transpose((1,0))
-                        filename = f"{out_root}/{outfolder}/{self.dist_func}/Adv_point_cloud_{pred_val[0]}_{adv_val[0]}_{dist_val[0]}.png"
-                        print(f"save {filename} of iteration {iteration} of binary search round {binary_step}, adv loss: {adv_val}, dist loss: {dist_val}")
-                        showXYZ(pc, filename,face_area)
                              
                 if iteration % 10 == 0:
                     print("Step:", binary_step, " Iteration:", iteration, " Weight:", current_weight[0])
-                    # print("grad",torch.nansum(pha_wrapped.grad[face_area[1]:face_area[1]+face_area[3],face_area[0]:face_area[0]+face_area[2]]).item())
-                    print("loss:", loss.item(), " dist loss:", dist_loss.item(), " adv loss:" ,adv_loss.item(),"pred", pred_val)
+                    print("loss: %2.2f, dist loss: %2.2f, adv_loss: %2.2f , pred: %d" % (
+                    loss.item(), dist_loss.item(), adv_loss.item(), pred_val))
                     
                     
                 if self.abort_early and not iteration % (self.num_iter // 10):
@@ -844,8 +597,8 @@ class CW:
             
                    
             # adjust weight factor   
-            for e, label in enumerate(ori_label.cpu().numpy()):
-                if bestpred[e] != label and bestscore[e] != -1 and bestdist[e] <= o_bestdist[e]:
+            for e, label in enumerate(attacked_label.cpu().numpy()):
+                if bestscore[e] != -1 and bestdist[e] <= o_bestdist[e]:
                     # success 
                     lower_bound[e] = max(lower_bound[e], current_weight[e])
                     current_weight[e] = (lower_bound[e] + upper_bound[e]) / 2.
@@ -869,7 +622,6 @@ class CW:
             print("Fail to attack ")
         else:
             print('Successfully attack {}/{}   pred: {}, best dist loss: {}'.format(success_num, B, pred, o_bestdist[0] ))
-        # pc = np.matmul(np.matmul(np.linalg.inv(Rc_1),np.linalg.inv(Kc)),o_bestattack).transpose((1,0))
         pc = o_bestattack.transpose((1,0))
         return pc, success_num, y_p_rebuild.cpu().detach().numpy(), bestpred[0]
     
@@ -914,6 +666,7 @@ class CW:
             Tr = Ty
         else:
             Tr = To
+        Tr = Tr.to(device)
         # normal distribution noises
         # zero = torch.randn(((B, 2, K))) * 1e-4 # x and y axis
         # rand = torch.randn(((B, 1, K))) * 1e-2 # z axis
@@ -967,10 +720,7 @@ class CW:
         atten1_map = (atten1_map - np.min(atten1_map,(0,1)))/(np.max(atten2_map,(0,1)) - np.min(atten2_map,(0,1)))
         atten2_map = gaussBlur(atten2_map, 2, 10 , 10)
        
-        atten_map = 0.5 * atten1_map + atten2_map 
-        if out_root != None:
-            plot(atten2_map,  f"{out_root}/{outfolder}/{self.dist_func}/atten_map2.png", face_area)
-            plot(atten_map, f"{out_root}/{outfolder}/{self.dist_func}/atten_map.png", face_area)
+        atten_map = 0.5 * atten1_map + atten2_map
         return atten_map
         
     def localVar(self , img):

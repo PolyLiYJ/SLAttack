@@ -50,11 +50,46 @@ We recommend running this repository using [Anaconda](https://docs.anaconda.com/
 conda install --yes --file requirements.txt
 ```
 
-### Run the attack
-- To excecute L1 attack on Bosphorus dataset and PointNet and save the adversarial point cloud.
+### Run the untarget attack
+- To excecute L2Loss attack on Bosphorus dataset and PointNet and save the adversarial point cloud.
+- L2Loss is optimized on the **phase map**. Please see our paper.
 ```
-python3 Test_CW_SL.py --dist_function L1Loss --dataset Bosphorus --whether_1d True --model PointNet --whether_renormalization True --whether_resample True
+python3 Test_CW_SL.py --dataset Bosphorus \
+--model PointNet \
+--dist_function L2Loss
 ```
+
+- For comparison, you can also excecute L2Loss_pt attack on Bosphorus dataset and PointNet and save the adversarial point cloud.
+- L2Loss_pt loss is optimized on the **point cloud**. 
+```
+python3 Test_CW_SL.py --dataset Bosphorus \
+--model PointNet \
+--dist_function L2Loss_pt
+```
+
+### Run the target attack
+- To excecute L2 attack on Bosphorus dataset and PointNet and save the adversarial point cloud.
+- L2 loss is optimized on the **phase map**. Please see our paper.
+```
+python3 Test_CW_SL.py --dataset Bosphorus \
+--model PointNet \
+--dist_function L2Loss \
+--whether_target
+```
+
+- For comparison, you can also excecute L2Loss_pt on Bosphorus dataset and PointNet and save the adversarial point cloud.
+- L2Loss_pt is optimized on the **point cloud**. 
+```
+python3 Test_CW_SL.py --dataset Bosphorus \
+--model PointNet \
+--dist_function L2Loss_pt \
+--whether_target
+```
+
+### 
+
+
+### Get the structured light image
 
 - To get fringe images (adversarial illumination) from the above generated adversarial point cloud. The clean point cloud and adversarial point cloud are needed.
 ```

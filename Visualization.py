@@ -51,12 +51,12 @@ def mesh(face_area, pha, filename, zlabel = r'$z$'):
 
 
 def showXYZ(xyz, filename, face_area = None, axis = "off"):
-    if face_area.any() == None:
-        fig = plt.figure(figsize=(4.5,6))
-    else:
+    if face_area is not None:
         w = face_area[2]
         h = face_area[3]
         fig = plt.figure(figsize=(w*6/h,6))
+    else:
+        fig = plt.figure(figsize=(4.5,6))
     ax = fig.add_subplot(111, projection='3d')
     xs = xyz[:,0]
     ys = xyz[:,1]
