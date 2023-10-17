@@ -1,6 +1,6 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
-# platform: osx-64
+# platform: Ubuntu 18
 blas=1.0=mkl
 brotli=1.0.9=hca72f7f_7
 brotli-bin=1.0.9=hca72f7f_7

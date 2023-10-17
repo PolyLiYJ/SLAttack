@@ -229,7 +229,7 @@ class CW:
         Yws = unnormalized_data[:,1]
         Zws = unnormalized_data[:,2]
         
-        area = np.zeros((self.height, self.width),dtype=np.float)
+        area = np.zeros((self.height, self.width),dtype=float)
         y_p = np.full((self.height, self.width),0.0)
         
         count_xy = 0 
@@ -708,9 +708,9 @@ class CW:
         kernel_size = int(face_area[2]/15)
         face_center_x = face_area[1] + face_area[3]/2. # row
         face_center_y = face_area[0] + face_area[2]/2. # col
-        atten1_map = np.zeros((self.height,self.width), dtype = np.float)
+        atten1_map = np.zeros((self.height,self.width), dtype =float)
         # local variance
-        atten2_map = np.zeros((self.height,self.width), dtype = np.float)
+        atten2_map = np.zeros((self.height,self.width), dtype = float)
         for i in range(face_area[1],int(face_area[1]+face_area[3])):
             for j in range(face_area[0], int(face_area[0]+face_area[2])):
                 atten1_map[i,j] = math.exp(-0.01 * math.sqrt(pow(i-face_center_x,2) + pow(j-face_center_y,2)))

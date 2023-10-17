@@ -8,10 +8,10 @@ import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import Dataset, DataLoader
-from readbnt import read_bntfile
+from dataset.readbnt import read_bntfile
 random.seed(7122)
 # device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
-data_root = os.path.expanduser('~//yq_pointnet//BosphorusDB')
+data_root = os.path.expanduser('~/dataset/BosphorusDB')
 
 np.set_printoptions(suppress=True)
 numpy.set_printoptions(suppress=True)
