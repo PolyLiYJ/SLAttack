@@ -170,7 +170,7 @@ class CW:
     """
 
     def __init__(self, model, adv_func, dist_func, attack_lr=1e-2,
-                 init_weight=1e-3, max_weight=100., binary_step=10, num_iter=500, whether_target=True, whether_1d=True):
+                 init_weight=1e-3, max_weight=100., binary_step=10, num_iter=500, whether_target=True, whether_1d=True, abort_early=False):
         """CW attack by perturbing points.
         Args:
             model (torch.nn.Module): victim model
@@ -195,7 +195,7 @@ class CW:
         self.num_iter = num_iter
         self.whether_target = whether_target
         self.whether_1d = whether_1d
-        self.abort_early = True
+        self.abort_early = abort_early
         
         self.n = 4 # digital number of Gray code
         self.N = 12. # order of gray code
@@ -217,7 +217,7 @@ class CW:
         self.Ap = np.dot(self.Kp, np.append(self.Rp_1, self.Tp_1,axis = 1))
 
     
-    def attack_optimize_on_yp(self, unnormalized_data,label, outfolder, args):
+    def attack_optimize_on_yp(self, unnormalized_data,label, args):
         
         """Attack on given data to target.
         Args:
@@ -256,8 +256,7 @@ class CW:
         ycol = np.array(ycol)
         face_area = np.array([np.min(ycol),np.min(xcol), np.max(ycol)-np.min(ycol), np.max(xcol)-np.min(xcol)],dtype=np.uint32)
 
-        
-        atten_map = self.get_attention_map(face_area,  mask = area, out_root=out_root, outfolder=outfolder, y_p = y_p,)
+        atten_map = self.get_attention_map(face_area,  mask = area, out_root=out_root, y_p = y_p)
         atten_map = torch.from_numpy(atten_map).to(device)
         atten_map.requires_grad = False
         B = 1 # batchsize
@@ -325,10 +324,14 @@ class CW:
                     ori_data_aligned =  adv_data_aligned.clone().detach() # [B,3,K]
                     ori_data_aligned.requires_grad = False
                 
-                # single direction constraint   , rotate the point cloud
-                adv_z = adv_data_aligned[0,2,:].unsqueeze(0).unsqueeze(1) #[B,1,K]
-                # add noise to the rotated point cloud
-                adv_data_cat = torch.cat((ori_data_aligned[0,0:2,:].unsqueeze(0), adv_z), dim = 1)
+                if args.whether_1d:
+                    # single direction constraint   , rotate the point cloud
+                    adv_z = adv_data_aligned[0,2,:].unsqueeze(0).unsqueeze(1) #[B,1,K]
+                    # add noise to the rotated point cloud
+                    adv_data_cat = torch.cat((ori_data_aligned[0,0:2,:].unsqueeze(0), adv_z), dim = 1)
+                else:
+                    adv_data_cat = adv_data_aligned
+                    
                 # recover the point cloud
                 inv_KcRc = torch.tensor(np.matmul(np.linalg.inv(self.Rc_1), np.linalg.inv(self.Kc)), requires_grad=False).float().to(device)
                 adv_data_backed = torch.matmul(inv_KcRc, adv_data_cat[0]).unsqueeze(0)
@@ -350,6 +353,8 @@ class CW:
                     
                 if args.whether_renormalization == True:     
                     adv_data_normed, _ , _ = self.normalize(adv_data_backed)
+                else:
+                    adv_data_normed = adv_data_backed
 
                 if args.whether_3Dtransform == True:
                     adv_loss_list = torch.empty(10)
@@ -367,9 +372,6 @@ class CW:
                 pred = torch.argmax(logits, dim=1)  
                 softmax = torch.nn.Softmax(dim=1)
                 score = softmax(logits)[0,int(label)]  
-   
-                if binary_step == 0 and iteration == 0:
-                    print("The reconstuct one prediction is :", pred.item())
                 
                 loss.backward()
                 with torch.no_grad():
@@ -398,9 +400,9 @@ class CW:
                         o_best_yp_rebuild = y_p_rebuild.detach().cpu().numpy()
 
                 # mesh(face_area, pha_wrapped.cpu().detach().numpy())
-                if iteration % 10 == 0:
+                if iteration % 100 == 0:
                     print("binary step:", binary_step, "  iteration:", iteration, "current weight:", current_weight[0])
-                    print("loss: %2.2f, dist loss: %2.2f, adv_loss: %2.2f , pred: %d" % ( loss.item(),dist_loss.item(), adv_loss.item(),  pred_val))
+                    print("loss: %2.5f, dist loss: %2.5f, adv_loss: %2.5f , pred: %d" % ( loss.item(),dist_loss.item(), adv_loss.item(),  pred_val))
                     
                 if self.abort_early and not iteration % (self.num_iter // 10):
                     if loss.item() > pre_loss * 0.999:
@@ -425,8 +427,11 @@ class CW:
         success_num = (lower_bound > 0.).sum()
         if success_num == 0:
             fail_idx = (lower_bound == 0.)
-            o_bestattack = input_val[fail_idx]
-            print("Fail to attack ")
+            #o_bestattack = input_val[fail_idx]
+            o_bestattack = None
+            o_best_yp_rebuild = None, 
+            o_best_pred = None
+            print("Fail to attack")
         else:
             print('Successfully attack {}/{}   pred: {}  best dist loss : {}, best weight: {} '.format(success_num, B, o_best_pred, o_bestdist[0], current_weight[0] ))
         return o_bestattack, success_num, o_best_yp_rebuild, o_best_pred
@@ -438,7 +443,7 @@ class CW:
         outfolder: The output folder
         args: argments
     """  
-    def attack_optimize_on_pointcloud(self, unnormalized_data,label, outfolder, args):
+    def attack_optimize_on_pointcloud(self, unnormalized_data,label, args):
         # load camera extric matrix
         RTc = scio.loadmat('test_face_data/CamCalibResult.mat')
         Kc = RTc['KK']   # camera intrinsics
@@ -547,7 +552,7 @@ class CW:
                         logits,_,_ = self.model(adv_data_rotated_renormed)
                         adv_loss_list[i] = self.adv_func(logits, attacked_label ).mean()
                     adv_loss = torch.mean(adv_loss_list)
-                    loss = dist_loss + torch.mul( adv_loss , current_weight[0])
+                    loss = adv_loss + torch.mul(dist_loss , current_weight[0])
                 else:
                     logits,_,_ = self.model(adv_data_normed)
                     adv_loss = self.adv_func(logits,attacked_label).mean()
@@ -704,7 +709,7 @@ class CW:
     def removeNan(self, adv_data):
         return adv_data
     
-    def get_attention_map(self, face_area, mask, out_root=None, outfolder =None, y_p = None):
+    def get_attention_map(self, face_area, mask, out_root=None, y_p = None):
         kernel_size = int(face_area[2]/15)
         face_center_x = face_area[1] + face_area[3]/2. # row
         face_center_y = face_area[0] + face_area[2]/2. # col

@@ -34,7 +34,7 @@ def rand_row(array, dim_needed):
     np.random.shuffle(row_sequence)
     return array[row_sequence[0:dim_needed], :]
 
-def CW_attack_api(args, pt, label = 105, outfolder = None):
+def CW_attack_api(args, pt, label = 105):
 
     if args.dataset == 'Bosphorus':
         num_of_class = 107
@@ -78,9 +78,9 @@ def CW_attack_api(args, pt, label = 105, outfolder = None):
 
     # attack
     if args.dist_function in {'Chamfer_pt', 'L2Loss_pt', 'ChamferkNN_pt'}:
-        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_pointcloud(pt, label, outfolder, args)
+        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_pointcloud(pt, label, args)
     else:
-        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_yp(pt, label, outfolder, args)
+        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_yp(pt, label, args)
     
     return adv_PC, susscessnum, x_p, pred
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     parser.add_argument('--binary_step', type=int, default=5, metavar='N',help='Binary search step')
     parser.add_argument('--data_root', type=str,default='data/attack_data.npz')    
     parser.add_argument('--dataset', type=str, default='Bosphorus', help="dataset: Bosphorus | Eurecom")    
-    parser.add_argument('--dist_function', default="L1Loss", type=str,
+    parser.add_argument('--dist_function', default="L2Loss", type=str,
                         help=' L1Loss, L2Loss, L2Loss_pt, Chamfer_pt, ChamferkNN_pt')
     parser.add_argument('--dropout', type=float, default=0.5, help='parameters in DGCNN: dropout rate')    
     parser.add_argument('--emb_dims', type=int, default=1024, metavar='N',
@@ -165,7 +165,7 @@ if __name__ == "__main__":
     print("Target attack:", args.whether_target)
 
     if args.whether_target == False:
-        advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label= originalLabel, outfolder = args.normal_name[:-4])
+        advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label= originalLabel)
         adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + "_"+ str(originalLabel) +'.txt')
         np.savetxt(adv_fname,advPC, fmt='%.04f', delimiter = ',')
         print("save file at", adv_fname)
@@ -175,7 +175,7 @@ if __name__ == "__main__":
         targetLabel = random.randint(0, 100)
         print("Target label:", targetLabel)
         if targetLabel != originalLabel:
-            advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label = targetLabel, outfolder = args.normal_name[:-4]+"_target")
+            advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label = targetLabel)
             adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + '.txt')
             np.savetxt(adv_fname, advPC, fmt='%.04f', delimiter = ',')
             print("save adversarial point cloud at", adv_fname)

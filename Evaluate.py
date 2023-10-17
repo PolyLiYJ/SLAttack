@@ -23,6 +23,7 @@ from model.pointnet import PointNetCls, feature_transform_regularizer
 from model.pointnet2_MSG import PointNet_Msg
 from model.pointnet2_SSG import PointNet_Ssg
 from model.dgcnn import DGCNN
+from dataset.bosphorus_dataset import Bosphorus_Dataset
 device = torch.device("cpu")
 def check_num_pc_changed(adv, ori):
     logits_mtx = np.logical_and.reduce(adv == ori, axis=1)
@@ -34,7 +35,7 @@ def rand_row(array, dim_needed):
     np.random.shuffle(row_sequence)
     return array[row_sequence[0:dim_needed], :]
 
-def CW_attack_api(args, pt, label = 105, outfolder = None):
+def CW_attack_api(args, pt, label = 105): 
 
     if args.dataset == 'Bosphorus':
         num_of_class = 107
@@ -74,13 +75,14 @@ def CW_attack_api(args, pt, label = 105, outfolder = None):
                   binary_step=args.binary_step,
                   num_iter=args.num_iter,
                   whether_target=args.whether_target,
-                  whether_1d=args.whether_1d)
+                  whether_1d=args.whether_1d,
+                  abort_early=args.early_break)
 
     # attack
     if args.dist_function in {'Chamfer_pt', 'L2Loss_pt', 'ChamferkNN_pt'}:
-        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_pointcloud(pt, label, outfolder, args)
+        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_pointcloud(pt, label, args)
     else:
-        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_yp(pt, label, outfolder, args)
+        adv_PC, susscessnum, x_p, pred = attacker.attack_optimize_on_yp(pt, label, args)
     
     return adv_PC, susscessnum, x_p, pred
 
@@ -106,12 +108,12 @@ if __name__ == "__main__":
      # Training settings
     parser = argparse.ArgumentParser(description='Structured light attack')
     parser.add_argument('--adv_func', type=str, default='logits',choices=['logits', 'cross_entropy'],help='Adversarial loss function to use')
-    parser.add_argument('--attack_lr', type=float, default=0.01,help='lr in CW optimization')    
+    parser.add_argument('--attack_lr', type=float, default=0.001,help='lr in CW optimization')    
     parser.add_argument('--batch_size', type=int, default=-1, metavar='BS',help='Size of batch')    
-    parser.add_argument('--binary_step', type=int, default=5, metavar='N',help='Binary search step')
+    parser.add_argument('--binary_step', type=int, default=10, metavar='N',help='Binary search step')
     parser.add_argument('--data_root', type=str,default='data/attack_data.npz')    
     parser.add_argument('--dataset', type=str, default='Bosphorus', help="dataset: Bosphorus | Eurecom")    
-    parser.add_argument('--dist_function', default="L1Loss", type=str,
+    parser.add_argument('--dist_function', default="L2Loss", type=str,
                         help=' L1Loss, L2Loss, L2Loss_pt, Chamfer_pt, ChamferkNN_pt')
     parser.add_argument('--dropout', type=float, default=0.5, help='parameters in DGCNN: dropout rate')    
     parser.add_argument('--emb_dims', type=int, default=1024, metavar='N',
@@ -124,23 +126,22 @@ if __name__ == "__main__":
     parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet2_MSG', 'PointNet2_SSG',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
     parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
-    parser.add_argument('--num_iter', type=int, default= 100, metavar='N',help='Number of iterations in each search step')
-    parser.add_argument('--normal_name', default='person1.txt', type=str,help='The normal point cloud filename')
+    parser.add_argument('--num_iter', type=int, default= 300, metavar='N',help='Number of iterations in each search step')
     
-    parser.add_argument('--whether_1d', default=True, type=bool,help='True for z perturbation, False for xyz perturbation')
-    parser.add_argument('--whether_target', default=False, action='store_true', help='True for target attack, False for untarget attack')
-    parser.add_argument('--whether_renormalization', default=True, type=bool,
+    parser.add_argument('--whether_1d', action='store_true', default=False, help='True for z perturbation, False for xyz perturbation')
+    parser.add_argument('--whether_target', action='store_true', default=False, help='True for target attack, False for untarget attack')
+    parser.add_argument('--whether_renormalization', action='store_true', default=False,
                         help='True for renormalization')
-    parser.add_argument('--whether_3Dtransform', default=True, type=bool,
+    parser.add_argument('--whether_3Dtransform', action='store_true', default=False,
                         help='3D transformation')
-    parser.add_argument('--whether_resample', default=True, type=bool,
+    parser.add_argument('--whether_resample',action='store_true', default=False,
                         help='whether resample using farest sampling')
+    parser.add_argument('--early_break',action='store_true', default=False,
+                        help='whether early break')
     args = parser.parse_args()
     '''
     set parameters
     '''
-    data_root = os.path.expanduser("test_face_data/")
-    normalPC = os.path.join(data_root, args.normal_name)
     count = 0
     num = 0
     label = []
@@ -148,41 +149,56 @@ if __name__ == "__main__":
     '''
     load model
     '''
-    model = PointNetCls(k=107, feature_transform=False)
+    if args.dataset == 'Bosphorus':
+        num_of_class = 107
+    elif args.dataset == 'Eurecom':
+        num_of_class = 52
+
+    if args.model == 'PointNet':
+        model = PointNetCls(k=num_of_class, feature_transform=False)    
+    elif args.model == 'PointNet++Msg':
+        model = PointNet_Msg(num_of_class, normal_channel=False)
+    elif args.model == 'PointNet++Ssg':
+        model = PointNet_Ssg(num_of_class)
+    elif args.model == 'DGCNN':
+        model = DGCNN(args, output_channels=num_of_class).to(device)
+    else:
+        exit('wrong model type')        
+        
     model.load_state_dict(
         torch.load(f'cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth', map_location=torch.device('cpu')) )
     model.to(device)
-    test_data_path = os.path.expanduser(data_root + args.normal_name)
-    try:
-        pt_ori = np.loadtxt(test_data_path, delimiter=' ')
-    except:
-        pt_ori = np.loadtxt(test_data_path, delimiter=',')
-    pt_normalized,mean, var = preprocess(pt_ori)
+    dataset = Bosphorus_Dataset(csv_path="dataset/train_farthest_sampled_pure.csv")
+    train_dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
     model.eval()
-    pred,_,_ = model(pt_normalized)
-    originalLabel = torch.argmax(pred).cpu().numpy()
-    print("the original label of test data:", originalLabel)
+    total_num = 0
+    total_success_num = 0
     print("Target attack:", args.whether_target)
-
-    if args.whether_target == False:
-        advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label= originalLabel, outfolder = args.normal_name[:-4])
-        adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + "_"+ str(originalLabel) +'.txt')
-        np.savetxt(adv_fname,advPC, fmt='%.04f', delimiter = ',')
-        print("save file at", adv_fname)
-        adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + '_' + str(originalLabel) + '_xp.txt')
-        np.savetxt(adv_fname,x_p_rebuild)
-    else:
-        targetLabel = random.randint(0, 100)
-        print("Target label:", targetLabel)
-        if targetLabel != originalLabel:
-            advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label = targetLabel, outfolder = args.normal_name[:-4]+"_target")
-            adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + '.txt')
-            np.savetxt(adv_fname, advPC, fmt='%.04f', delimiter = ',')
-            print("save adversarial point cloud at", adv_fname)
-            adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + 'xp.txt')
-            np.savetxt(adv_fname,x_p_rebuild)
-            print("save adversarial phase map at", adv_fname)
-            pt_normalized, _,_ = preprocess(advPC)
-            pred, _, _ = model(pt_normalized)
-            predLabel = torch.argmax(pred).cpu().numpy()
-            print("the pred label of adv data:", predLabel)
+    for index, data in enumerate(train_dataloader): 
+        if index < 1000:   # test on 1000 samples
+            print("Test index:", index)
+            pt_ori = data[0][0].cpu().numpy()
+            label_ori = data[1][0]
+            pt_normalized, _,_ = preprocess(pt_ori)
+            pred,_,_ = model(pt_normalized)
+            originalLabel = torch.argmax(pred).cpu().numpy()
+            if originalLabel == label_ori.cpu().numpy(): # check whether the pretrained model can correctly predict the label or not 
+                print("The original label of test data:", originalLabel)
+                total_num = total_num + 1
+                if args.whether_target == False:
+                    advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label= originalLabel)
+                else:
+                    targetLabel = random.randint(0, 100)
+                    print("Target label:", targetLabel)
+                    if targetLabel != originalLabel:
+                        advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label = targetLabel)
+                if successnum > 0:
+                    adv_pt_normalized, _,_ = preprocess(advPC)
+                    pred, _, _ = model(adv_pt_normalized)
+                    predLabel = torch.argmax(pred).cpu().numpy()
+                    print("The pred label of adv data:", predLabel)
+                    total_success_num = total_success_num + 1
+            if total_num > 0:
+                print("total test number: ", total_num)
+                print("total_success_number: ", total_success_num)
+                print("attack success rate: ", total_success_num*1.0/total_num)

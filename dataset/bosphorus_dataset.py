@@ -127,6 +127,6 @@ class Bosphorus_Dataset(Dataset):
         # centriod =  FarthestPointSampling_ForBatch(point_cloud_data, 4000)
         # point_cloud_data =  index_points(point_cloud_data, centriod)
         # point_cloud_data = point_cloud_data[0]
-        point_cloud_data = torch.from_numpy(point_cloud_data.astype(np.float)).to(self.device)
+        point_cloud_data = torch.from_numpy(point_cloud_data.astype(float)).to(self.device)
         cls_id = torch.from_numpy(np.array([cls_id]).astype(np.int64)).to(self.device)
         return point_cloud_data, cls_id
