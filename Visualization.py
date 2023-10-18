@@ -68,7 +68,7 @@ def showXYZ(xyz, filename, face_area = None, axis = "off"):
     plt.axis(axis)
     plt.savefig(filename, bbox_inches='tight', pad_inches = 0)
     print("save fig at  " ,filename) 
-    plt.show()
+    # plt.show()
     
 
 def gaussBlur(img, sigma, H, W, _boundary='fill', _fillvalue=0):

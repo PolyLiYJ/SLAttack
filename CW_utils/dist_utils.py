@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import math
 from CW_utils.distance import ChamferDistance, HausdorffDistance
-device = torch.device("cpu")
+device = torch.device("cuda")
 
 class L2Dist(nn.Module):
 
@@ -23,22 +23,8 @@ class L2Dist(nn.Module):
             weights (torch.FloatTensor, optional): [B], if None, just use avg
             batch_avg: (bool, optional): whether to avg over batch dim
         """
-        B = adv_phase.shape[0]
-        if weights is None:
-            weights = torch.ones((B,))
-        weights = weights.float().to(device)
         dist = torch.sqrt(torch.nansum(
-            (adv_phase - ori_phase+0.0001) ** 2)+ 0.0001)  # [B]
-        dist = dist * weights
-        # adv_pc1 = adv_pc[0,0:2]
-        # ori_pc1 = ori_pc[0,0:2]
-        # dist1 = torch.sqrt(torch.sum(
-        #     (adv_pc1 - ori_pc1) ** 2))  # [B]
-
-
-        # dist = (dist + (dist1+1)) * weights
-
-
+            (adv_phase - ori_phase) ** 2)+ 0.000001)  # [B]
         if batch_avg:
             return dist.mean()
         return dist

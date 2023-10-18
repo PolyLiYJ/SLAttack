@@ -13,7 +13,7 @@ from torch.utils.data.distributed import DistributedSampler
 from torch.nn.parallel import DistributedDataParallel
 
 import sys
-random.seed(7122)
+random.seed(7100)
 from CW_utils.basic_util import str2bool, set_seed
 from CW_SL_attack import CW
 from CW_utils.adv_utils import CrossEntropyAdvLoss, LogitsAdvLoss
@@ -55,7 +55,7 @@ def CW_attack_api(args, pt, label = 105):
     else:
         exit('wrong model type' )
         
-    print(f"launch model cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth")        
+    print(f"load model cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth")        
         
     model.load_state_dict(
         torch.load(f'cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth', map_location=torch.device('cpu')) )
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     parser.add_argument('--binary_step', type=int, default=5, metavar='N',help='Binary search step')
     parser.add_argument('--data_root', type=str,default='data/attack_data.npz')    
     parser.add_argument('--dataset', type=str, default='Bosphorus', help="dataset: Bosphorus | Eurecom")    
-    parser.add_argument('--dist_function', default="L2Loss", type=str,
+    parser.add_argument('--dist_function', default="L2Loss_pt", type=str,
                         help=' L1Loss, L2Loss, L2Loss_pt, Chamfer_pt, ChamferkNN_pt')
     parser.add_argument('--dropout', type=float, default=0.5, help='parameters in DGCNN: dropout rate')     
     parser.add_argument('--early_break',action='store_true', default=False,
@@ -131,11 +131,11 @@ if __name__ == "__main__":
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
     parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
-    parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
-    parser.add_argument('--num_iter', type=int, default= 500, metavar='N',help='Number of iterations in each search step')
+    parser.add_argument('--num_points', type=int, default = 512,help='num of points to use')
+    parser.add_argument('--num_iter', type=int, default= 300, metavar='N',help='Number of iterations in each search step')
     
-    parser.add_argument('--whether_1d', action='store_true', default=False, help='True for z perturbation, False for xyz perturbation')
-    parser.add_argument('--whether_target', action='store_true', default=False, help='True for target attack, False for untarget attack')
+    parser.add_argument('--whether_1d', action='store_true', default=True, help='True for z perturbation, False for xyz perturbation')
+    parser.add_argument('--whether_target', action='store_true', default=True, help='True for target attack, False for untarget attack')
     parser.add_argument('--whether_renormalization', action='store_true', default=False,
                         help='True for renormalization')
     parser.add_argument('--whether_3Dtransform', action='store_true', default=False,
@@ -173,7 +173,7 @@ if __name__ == "__main__":
     model.load_state_dict(
         torch.load(f'cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth', map_location=torch.device('cpu')) )
     model.to(device)
-    dataset = Bosphorus_Dataset(csv_path="dataset/train_farthest_sampled_pure.csv")
+    dataset = Bosphorus_Dataset(csv_path="dataset/test_farthest_sampled.csv", num_points = args.num_points )
     train_dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
     model.eval()
     total_num = 0
@@ -186,7 +186,8 @@ if __name__ == "__main__":
             label_ori = data[1][0]
             pred,_,_ = model(data[0][0].unsqueeze(0).permute(0,2,1).float().to(device))
             originalLabel = torch.argmax(pred).cpu().numpy()
-            if originalLabel == label_ori.cpu().numpy(): # check whether the pretrained model can correctly predict the label or not 
+            # check whether the pretrained model can correctly predict the label or not 
+            if originalLabel == label_ori.cpu().numpy(): 
                 print("The original label of test data:", originalLabel)
                 total_num = total_num + 1
                 if args.whether_target == False:

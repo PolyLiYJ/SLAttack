@@ -80,19 +80,16 @@ def CW_attack_api(args, pt, label = 105):
     return adv_PC, susscessnum, x_p, pred
 
 # input: numpy.array [K,3]
-def preprocess(ipt):
+def preprocess(ipt, num_points = 4000):
     # normalization
     ipt= ipt[:,0:3]
-    ipt = rand_row(ipt, 4000)
+    ipt = rand_row(ipt, num_points)
     mean = np.expand_dims(np.mean(ipt, axis=0), 0)
     ipt = ipt - mean
     var = np.max(np.sqrt(np.sum(ipt ** 2, axis=1)), 0)
     ipt = ipt / var  # scale
        
-    # to tensor
-    ipt = np.expand_dims(ipt, 0)
-    ipt = torch.from_numpy(ipt).float().to(device).requires_grad_(False) 
-    ipt = ipt.permute(0,2,1) #[1,3,4000]
+    
     return ipt, mean, var
 
 
@@ -116,9 +113,9 @@ if __name__ == "__main__":
                         help='Num of nearest neighbors to use in DGCNN')
     parser.add_argument('--kappa', type=float, default=10.,help='min margin in logits adv loss')   
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
-    parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet++MSG', 'PointNet++SSG',
+    parser.add_argument('--model', type=str, default='PointNet++Msg', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
-    parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
+    parser.add_argument('--num_points', type=int, default = 1024,help='num of points to use')
     parser.add_argument('--num_iter', type=int, default= 100, metavar='N',help='Number of iterations in each search step')
     parser.add_argument('--normal_name', default='person1.txt', type=str,help='The normal point cloud filename')
     
@@ -143,7 +140,21 @@ if __name__ == "__main__":
     '''
     load model
     '''
-    model = PointNetCls(k=107, feature_transform=False)
+    if args.dataset == 'Bosphorus':
+        num_of_class = 107
+    elif args.dataset == 'Eurecom':
+        num_of_class = 52
+
+    if args.model == 'PointNet':
+        model = PointNetCls(k=num_of_class, feature_transform=False)    
+    elif args.model == 'PointNet++Msg':
+        model = PointNet_Msg(num_of_class, normal_channel=False)
+    elif args.model == 'PointNet++Ssg':
+        model = PointNet_Ssg(num_of_class)
+    elif args.model == 'DGCNN':
+        model = DGCNN(args, output_channels=num_of_class).to(device)
+    else:
+        exit('wrong model type')   
     model.load_state_dict(
         torch.load(f'cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth', map_location=torch.device('cpu')) )
     model.to(device)
@@ -152,15 +163,19 @@ if __name__ == "__main__":
         pt_ori = np.loadtxt(test_data_path, delimiter=' ')
     except:
         pt_ori = np.loadtxt(test_data_path, delimiter=',')
-    pt_normalized,mean, var = preprocess(pt_ori)
+    pt_normalized,mean, var = preprocess(pt_ori, num_points=args.num_points)
+    # to tensor
+    ipt = np.expand_dims(pt_normalized, 0)
+    ipt = torch.from_numpy(ipt).float().to(device).requires_grad_(False) 
+    ipt = ipt.permute(0,2,1) #[1,3,4000]
     model.eval()
-    pred,_,_ = model(pt_normalized)
+    pred,_,_ = model(ipt)
     originalLabel = torch.argmax(pred).cpu().numpy()
     print("the original label of test data:", originalLabel)
     print("Target attack:", args.whether_target)
 
     if args.whether_target == False:
-        advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label= originalLabel)
+        advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_normalized, label= originalLabel)
         adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + "_"+ str(originalLabel) +'.txt')
         np.savetxt(adv_fname,advPC, fmt='%.04f', delimiter = ',')
         print("save file at", adv_fname)
@@ -170,7 +185,7 @@ if __name__ == "__main__":
         targetLabel = random.randint(0, 100)
         print("Target label:", targetLabel)
         if targetLabel != originalLabel:
-            advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label = targetLabel)
+            advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_normalized, label = targetLabel)
             adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + '.txt')
             np.savetxt(adv_fname, advPC, fmt='%.04f', delimiter = ',')
             print("save adversarial point cloud at", adv_fname)

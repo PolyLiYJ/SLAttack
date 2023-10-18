@@ -90,17 +90,6 @@ def  Rebuild_phase(unnormalized_data):
     xcol = np.array(xcol)
     ycol = np.array(ycol)
     face_area = np.array([np.min(ycol),np.min(xcol), np.max(ycol)-np.min(ycol), np.max(xcol)-np.min(xcol)],dtype=np.uint32)
-    # print(face_area)
-    # fig, ax = plt.subplots()
-    # ax.imshow(area)
-    # rect = patches.Rectangle((face_area[0],face_area[1]), face_area[2], face_area[3], linewidth=1, edgecolor='r', facecolor='none')
-    # ax.add_patch(rect)
-    # fig.savefig("face_area.png") 
-    
-    # plot(x_p/width, "test_face_data/x_p.png") 
-    # print(f"save original phase map at test_face_data/x_p.png")
-    # showXYZ(unnormalized_data[:,0:3], f"test_face_data/original_before_rebuild.png", face_area)
-    # print(f"save original 3D point cloud at test_face_data/original_before_rebuild.png")
     return x_p, face_area
 
 if __name__ == '__main__':

@@ -75,7 +75,7 @@ class Bosphorus_Dataset(Dataset):
         transform (callable, optional): Optional transform to be applied on a sample.
     """
 
-    def __init__(self, csv_path, transform=None, device="cpu"):
+    def __init__(self, csv_path, transform=None, device="cpu", num_points = 4000):
         csv_path = os.path.expanduser(csv_path)
         assert os.path.exists(csv_path), '%s not found' % csv_path
 
@@ -87,6 +87,7 @@ class Bosphorus_Dataset(Dataset):
         self._len_of_dataset = len(self.df.cls_name)
         self._transform = transform
         self.device = device
+        self.num_points = num_points
 
     def get_num_of_classes(self):
         return self._num_of_classes
@@ -99,6 +100,7 @@ class Bosphorus_Dataset(Dataset):
             idx = idx.tolist()
         point_cloud_path,  cls_id = self.df.iloc[idx]
         point_cloud_data = np.loadtxt(point_cloud_path, delimiter=' ')
+        point_cloud_data =  rand_row(point_cloud_data, self.num_points)
         # if int(cls_id) == 105:
         #     point_cloud_data = np.loadtxt(point_cloud_path, delimiter=',')
         #     #point_cloud_data =  farthest_point_sample([point_cloud_data], 4000)

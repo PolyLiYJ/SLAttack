@@ -92,7 +92,7 @@ if __name__ == "__main__":
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
     parser.add_argument('--model', type=str, default='PointNet++Msg', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
-    parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
+    parser.add_argument('--num_points', type=int, default = 1024,help='num of points to use')
     parser.add_argument('--continue_train',action='store_true')
 
 
