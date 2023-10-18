@@ -56,7 +56,7 @@ conda install --yes --file requirements.txt
 ```
 python3 Test_CW_SL.py --dataset Bosphorus \
 --model PointNet \
---dist_function L2Loss
+--dist_function L2Loss  --binary_step 1
 ```
 
 - For comparison, you can also excecute L2Loss_pt attack on Bosphorus dataset and PointNet and save the adversarial point cloud.
@@ -74,7 +74,7 @@ python3 Test_CW_SL.py --dataset Bosphorus \
 python3 Test_CW_SL.py --dataset Bosphorus \
 --model PointNet \
 --dist_function L2Loss \
---whether_target
+--whether_target --binary_step 1
 ```
 
 - For comparison, you can also excecute L2Loss_pt on Bosphorus dataset and PointNet and save the adversarial point cloud.
@@ -97,7 +97,9 @@ python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100 --early_break --
 ```
 python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 300 --binary_step 5 --dist_function L2Loss_pt
 ```
-- To test ASR on different models, you can just change the args.model parameters. We have upload the pretrained PointNet, PointNet2, and DGCNN models to the cls/Bosphorus folder. For example, to test the untarget attack success rate on PointNet++Msg, you can use
+
+### Evaluate on different models
+- To test ASR on different models, you can just change the args.model parameters. We have upload the pretrained PointNet, PointNet++Msg, PointNet++Ssg, and DGCNN models to the cls/Bosphorus folder. For example, to test the untarget attack success rate on PointNet++Msg, you can use
 ```
 python Evaluate.py --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 10 --dist_function L2Loss_pt --model PointNet++Msg
 ```
@@ -109,6 +111,10 @@ python Evaluate.py --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 
 ```
 python get_adv_illumination --normal_pc test_face_data/person1.txt --adv_pc test_face_data/adv_person1_untargeted_L1Loss_5.txt --outfolder test_face_data/person1/adversarial_fringe
 ```
+### Todo
+
+- Accelerate the differential 3D reconstruction function for-loops by using parallel computing on GPU and C++. (At present, it needs about 40s for 1024 points reconstruction.)
+
 
 ## Citation
 If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2205.13412">Physical-World Optical Adversarial Attacks on 3D Face Recognition</a>:

@@ -49,6 +49,9 @@ clamp1 = clamp_class1.apply
 
 # customed gradient backward function, see https://pytorch.org/docs/stable/generated/torch.autograd.Function.backward.html
 # to do : accelerate the for loop using CUDA and C++
+# Input: y_p: the phase map
+#        face_area: a rectangle of the face area
+#        Ac, Ap: the matrix of camera and the projector
 class reconstruct3D(torch.autograd.Function):
     @staticmethod
     def forward(ctx, y_p, face_area, Ac, Ap):        
@@ -409,7 +412,7 @@ class CW:
                         o_best_yp_rebuild = y_p_rebuild.detach().cpu().numpy()
 
                 # mesh(face_area, pha_wrapped.cpu().detach().numpy())
-                if iteration % 10 == 0:
+                if iteration % 1 == 0:
                     print("binary step:", binary_step, "  iteration:", iteration, "current weight:", current_weight[0])
                     print("loss: %2.5f, dist loss: %2.5f, adv_loss: %2.5f , pred: %d" % ( loss.item(),dist_loss.item(), adv_loss.item(),  pred_val))
                     
@@ -569,13 +572,12 @@ class CW:
         # return final results
         success_num = (lower_bound > 0.).sum()
         if success_num == 0:
-            fail_idx = (lower_bound == 0.)
-            o_bestattack = input_val[fail_idx][0]
             print("Fail to attack ")
+            return None, success_num, None, None
         else:
             print('Successfully attack {}/{}   pred: {}, best dist loss: {}'.format(success_num, B, pred, o_bestdist[0] ))
-        pc = o_bestattack.transpose((1,0))
-        return pc, success_num, None, bestpred[0]
+            pc = o_bestattack.transpose((1,0))
+            return pc, success_num, None, bestpred[0]
     
     
     '''

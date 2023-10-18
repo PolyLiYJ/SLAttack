@@ -113,7 +113,7 @@ if __name__ == "__main__":
                         help='Num of nearest neighbors to use in DGCNN')
     parser.add_argument('--kappa', type=float, default=10.,help='min margin in logits adv loss')   
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
-    parser.add_argument('--model', type=str, default='PointNet++Msg', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
+    parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
     parser.add_argument('--num_points', type=int, default = 1024,help='num of points to use')
     parser.add_argument('--num_iter', type=int, default= 100, metavar='N',help='Number of iterations in each search step')
@@ -123,9 +123,9 @@ if __name__ == "__main__":
     parser.add_argument('--whether_target', default=False, action='store_true', help='True for target attack, False for untarget attack')
     parser.add_argument('--whether_renormalization', default=True, type=bool,
                         help='True for renormalization')
-    parser.add_argument('--whether_3Dtransform', default=True, type=bool,
+    parser.add_argument('--whether_3Dtransform', default=False, type=bool,
                         help='3D transformation')
-    parser.add_argument('--whether_resample', default=True, type=bool,
+    parser.add_argument('--whether_resample', default=False, type=bool,
                         help='whether resample using farest sampling')
     args = parser.parse_args()
     '''
@@ -176,25 +176,27 @@ if __name__ == "__main__":
 
     if args.whether_target == False:
         advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_normalized, label= originalLabel)
-        adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + "_"+ str(originalLabel) +'.txt')
-        np.savetxt(adv_fname,advPC, fmt='%.04f', delimiter = ',')
-        print("save file at", adv_fname)
-        adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + '_' + str(originalLabel) + '_xp.txt')
-        np.savetxt(adv_fname,x_p_rebuild)
+        if successnum > 0 :
+            adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + "_"+ str(originalLabel) +'.txt')
+            np.savetxt(adv_fname,advPC, fmt='%.04f', delimiter = ',')
+            print("save file at", adv_fname)
+            adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_untargeted_" + args.dist_function + '_' + str(originalLabel) + '_xp.txt')
+            np.savetxt(adv_fname,x_p_rebuild)
     else:
         targetLabel = random.randint(0, 100)
         print("Target label:", targetLabel)
         if targetLabel != originalLabel:
             advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_normalized, label = targetLabel)
-            adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + '.txt')
-            np.savetxt(adv_fname, advPC, fmt='%.04f', delimiter = ',')
-            print("save adversarial point cloud at", adv_fname)
-            adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + 'xp.txt')
-            np.savetxt(adv_fname,x_p_rebuild)
-            print("save adversarial phase map at", adv_fname)
-            pt_normalized, _,_ = preprocess(advPC)
-            pred, _, _ = model(pt_normalized)
-            predLabel = torch.argmax(pred).cpu().numpy()
-            print("the pred label of adv data:", predLabel)
+            if successnum > 0:
+                adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + '.txt')
+                np.savetxt(adv_fname, advPC, fmt='%.04f', delimiter = ',')
+                print("save adversarial point cloud at", adv_fname)
+                adv_fname = os.path.join(data_root, 'adv_' + args.normal_name[:-4] + "_targeted_" + str(targetLabel) + 'xp.txt')
+                np.savetxt(adv_fname,x_p_rebuild)
+                print("save adversarial phase map at", adv_fname)
+                pt_normalized, _,_ = preprocess(advPC)
+                pred, _, _ = model(pt_normalized)
+                predLabel = torch.argmax(pred).cpu().numpy()
+                print("the pred label of adv data:", predLabel)
 
 
