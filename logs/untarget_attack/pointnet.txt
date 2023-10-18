@@ -1,0 +1,892 @@
+(cuda11new) yjli@Hulk:~/SLAttack$ python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100 --early_break --binary_step 5
+Matplotlib created a temporary cache directory at /tmp/matplotlib-h_bxnhn3 because the default path (/home/yjli/.cache/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Target attack: False
+Test index: 0
+tensor([19]) 19
+The original label of test data: 19
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+Successfully attack 1/1   pred: 39  best dist loss : 0.0, best weight: 96.878125 
+total test number:  1
+total_success_number:  1
+attack success rate:  1.0
+Test index: 1
+tensor([82]) 9
+total test number:  1
+total_success_number:  1
+attack success rate:  1.0
+Test index: 2
+tensor([5]) 5
+The original label of test data: 5
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 95
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 95
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 95
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 95
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 95
+Successfully attack 1/1   pred: 95  best dist loss : 0.0, best weight: 96.878125 
+total test number:  2
+total_success_number:  2
+attack success rate:  1.0
+Test index: 3
+tensor([2]) 2
+The original label of test data: 2
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 5.31032, dist loss: 0.00000, adv_loss: 5.31032 , pred: 65
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 5.31032, dist loss: 0.00000, adv_loss: 5.31032 , pred: 65
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 5.31032, dist loss: 0.00000, adv_loss: 5.31032 , pred: 65
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 5.31032, dist loss: 0.00000, adv_loss: 5.31032 , pred: 65
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 5.31032, dist loss: 0.00000, adv_loss: 5.31032 , pred: 65
+Successfully attack 1/1   pred: 65  best dist loss : 0.0, best weight: 96.878125 
+total test number:  3
+total_success_number:  3
+attack success rate:  1.0
+Test index: 4
+tensor([94]) 94
+The original label of test data: 94
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.86153, dist loss: 0.00000, adv_loss: 0.86153 , pred: 48
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.86153, dist loss: 0.00000, adv_loss: 0.86153 , pred: 48
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.86153, dist loss: 0.00000, adv_loss: 0.86153 , pred: 48
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.86153, dist loss: 0.00000, adv_loss: 0.86153 , pred: 48
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.86153, dist loss: 0.00000, adv_loss: 0.86153 , pred: 48
+Successfully attack 1/1   pred: 48  best dist loss : 0.0, best weight: 96.878125 
+total test number:  4
+total_success_number:  4
+attack success rate:  1.0
+Test index: 5
+tensor([21]) 4
+total test number:  4
+total_success_number:  4
+attack success rate:  1.0
+Test index: 6
+tensor([98]) 96
+total test number:  4
+total_success_number:  4
+attack success rate:  1.0
+Test index: 7
+tensor([12]) 12
+The original label of test data: 12
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.55099, dist loss: 0.00000, adv_loss: 0.55099 , pred: 39
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.55099, dist loss: 0.00000, adv_loss: 0.55099 , pred: 39
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.55099, dist loss: 0.00000, adv_loss: 0.55099 , pred: 39
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.55099, dist loss: 0.00000, adv_loss: 0.55099 , pred: 39
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.55099, dist loss: 0.00000, adv_loss: 0.55099 , pred: 39
+Successfully attack 1/1   pred: 39  best dist loss : 0.0, best weight: 96.878125 
+total test number:  5
+total_success_number:  5
+attack success rate:  1.0
+Test index: 8
+tensor([45]) 18
+total test number:  5
+total_success_number:  5
+attack success rate:  1.0
+Test index: 9
+tensor([93]) 93
+The original label of test data: 93
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 4
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 4
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 4
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 4
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 4
+Successfully attack 1/1   pred: 4  best dist loss : 0.0, best weight: 96.878125 
+total test number:  6
+total_success_number:  6
+attack success rate:  1.0
+Test index: 10
+tensor([33]) 33
+The original label of test data: 33
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  7
+total_success_number:  7
+attack success rate:  1.0
+Test index: 11
+tensor([48]) 45
+total test number:  7
+total_success_number:  7
+attack success rate:  1.0
+Test index: 12
+tensor([61]) 63
+total test number:  7
+total_success_number:  7
+attack success rate:  1.0
+Test index: 13
+tensor([62]) 97
+total test number:  7
+total_success_number:  7
+attack success rate:  1.0
+Test index: 14
+tensor([34]) 12
+total test number:  7
+total_success_number:  7
+attack success rate:  1.0
+Test index: 15
+tensor([83]) 33
+total test number:  7
+total_success_number:  7
+attack success rate:  1.0
+Test index: 16
+tensor([9]) 9
+The original label of test data: 9
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 17
+tensor([95]) 18
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 18
+tensor([7]) 39
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 19
+tensor([94]) 78
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 20
+tensor([92]) 39
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 21
+tensor([19]) 24
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 22
+tensor([43]) 33
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 23
+tensor([17]) 9
+total test number:  8
+total_success_number:  8
+attack success rate:  1.0
+Test index: 24
+tensor([63]) 63
+The original label of test data: 63
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 0
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 0
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 0
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 0
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 0
+Successfully attack 1/1   pred: 0  best dist loss : 0.0, best weight: 96.878125 
+total test number:  9
+total_success_number:  9
+attack success rate:  1.0
+Test index: 25
+tensor([19]) 19
+The original label of test data: 19
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+Successfully attack 1/1   pred: 85  best dist loss : 0.0, best weight: 96.878125 
+total test number:  10
+total_success_number:  10
+attack success rate:  1.0
+Test index: 26
+tensor([90]) 45
+total test number:  10
+total_success_number:  10
+attack success rate:  1.0
+Test index: 27
+tensor([36]) 51
+total test number:  10
+total_success_number:  10
+attack success rate:  1.0
+Test index: 28
+tensor([84]) 73
+total test number:  10
+total_success_number:  10
+attack success rate:  1.0
+Test index: 29
+tensor([88]) 95
+total test number:  10
+total_success_number:  10
+attack success rate:  1.0
+Test index: 30
+tensor([90]) 90
+The original label of test data: 90
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 35
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 35
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 35
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 35
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 35
+Successfully attack 1/1   pred: 35  best dist loss : 0.0, best weight: 96.878125 
+total test number:  11
+total_success_number:  11
+attack success rate:  1.0
+Test index: 31
+tensor([66]) 96
+total test number:  11
+total_success_number:  11
+attack success rate:  1.0
+Test index: 32
+tensor([29]) 84
+total test number:  11
+total_success_number:  11
+attack success rate:  1.0
+Test index: 33
+tensor([24]) 87
+total test number:  11
+total_success_number:  11
+attack success rate:  1.0
+Test index: 34
+tensor([1]) 39
+total test number:  11
+total_success_number:  11
+attack success rate:  1.0
+Test index: 35
+tensor([91]) 91
+The original label of test data: 91
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  12
+total_success_number:  12
+attack success rate:  1.0
+Test index: 36
+tensor([80]) 79
+total test number:  12
+total_success_number:  12
+attack success rate:  1.0
+Test index: 37
+tensor([39]) 39
+The original label of test data: 39
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 7.85041, dist loss: 0.00000, adv_loss: 7.85041 , pred: 30
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 7.85041, dist loss: 0.00000, adv_loss: 7.85041 , pred: 30
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 7.85041, dist loss: 0.00000, adv_loss: 7.85041 , pred: 30
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 7.85041, dist loss: 0.00000, adv_loss: 7.85041 , pred: 30
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 7.85041, dist loss: 0.00000, adv_loss: 7.85041 , pred: 30
+Successfully attack 1/1   pred: 30  best dist loss : 0.0, best weight: 96.878125 
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 38
+tensor([30]) 64
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 39
+tensor([104]) 12
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 40
+tensor([35]) 65
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 41
+tensor([83]) 33
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 42
+tensor([37]) 92
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 43
+tensor([52]) 11
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 44
+tensor([24]) 87
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 45
+tensor([7]) 39
+total test number:  13
+total_success_number:  13
+attack success rate:  1.0
+Test index: 46
+tensor([63]) 63
+The original label of test data: 63
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 6.80976, dist loss: 0.00000, adv_loss: 6.80976 , pred: 48
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 6.80976, dist loss: 0.00000, adv_loss: 6.80976 , pred: 48
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 6.80976, dist loss: 0.00000, adv_loss: 6.80976 , pred: 48
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 6.80976, dist loss: 0.00000, adv_loss: 6.80976 , pred: 48
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 6.80976, dist loss: 0.00000, adv_loss: 6.80976 , pred: 48
+Successfully attack 1/1   pred: 48  best dist loss : 0.0, best weight: 96.878125 
+total test number:  14
+total_success_number:  14
+attack success rate:  1.0
+Test index: 47
+tensor([12]) 12
+The original label of test data: 12
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 3.91525, dist loss: 0.00000, adv_loss: 3.91525 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 3.91525, dist loss: 0.00000, adv_loss: 3.91525 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 3.91525, dist loss: 0.00000, adv_loss: 3.91525 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 3.91525, dist loss: 0.00000, adv_loss: 3.91525 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 3.91525, dist loss: 0.00000, adv_loss: 3.91525 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  15
+total_success_number:  15
+attack success rate:  1.0
+Test index: 48
+tensor([69]) 3
+total test number:  15
+total_success_number:  15
+attack success rate:  1.0
+Test index: 49
+tensor([92]) 39
+total test number:  15
+total_success_number:  15
+attack success rate:  1.0
+Test index: 50
+tensor([72]) 41
+total test number:  15
+total_success_number:  15
+attack success rate:  1.0
+Test index: 51
+tensor([18]) 18
+The original label of test data: 18
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 7.54718, dist loss: 0.00000, adv_loss: 7.54718 , pred: 65
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 7.54718, dist loss: 0.00000, adv_loss: 7.54718 , pred: 65
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 7.54718, dist loss: 0.00000, adv_loss: 7.54718 , pred: 65
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 7.54718, dist loss: 0.00000, adv_loss: 7.54718 , pred: 65
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 7.54718, dist loss: 0.00000, adv_loss: 7.54718 , pred: 65
+Successfully attack 1/1   pred: 65  best dist loss : 0.0, best weight: 96.878125 
+total test number:  16
+total_success_number:  16
+attack success rate:  1.0
+Test index: 52
+tensor([102]) 39
+total test number:  16
+total_success_number:  16
+attack success rate:  1.0
+Test index: 53
+tensor([88]) 28
+total test number:  16
+total_success_number:  16
+attack success rate:  1.0
+Test index: 54
+tensor([60]) 77
+total test number:  16
+total_success_number:  16
+attack success rate:  1.0
+Test index: 55
+tensor([27]) 27
+The original label of test data: 27
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  17
+total_success_number:  17
+attack success rate:  1.0
+Test index: 56
+tensor([96]) 96
+The original label of test data: 96
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 39
+Successfully attack 1/1   pred: 39  best dist loss : 0.0, best weight: 96.878125 
+total test number:  18
+total_success_number:  18
+attack success rate:  1.0
+Test index: 57
+tensor([43]) 31
+total test number:  18
+total_success_number:  18
+attack success rate:  1.0
+Test index: 58
+tensor([31]) 5
+total test number:  18
+total_success_number:  18
+attack success rate:  1.0
+Test index: 59
+tensor([49]) 104
+total test number:  18
+total_success_number:  18
+attack success rate:  1.0
+Test index: 60
+tensor([87]) 87
+The original label of test data: 87
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  19
+total_success_number:  19
+attack success rate:  1.0
+Test index: 61
+tensor([97]) 97
+The original label of test data: 97
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 3.15000, dist loss: 0.00000, adv_loss: 3.15000 , pred: 65
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 3.15000, dist loss: 0.00000, adv_loss: 3.15000 , pred: 65
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 3.15000, dist loss: 0.00000, adv_loss: 3.15000 , pred: 65
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 3.15000, dist loss: 0.00000, adv_loss: 3.15000 , pred: 65
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 3.15000, dist loss: 0.00000, adv_loss: 3.15000 , pred: 65
+Successfully attack 1/1   pred: 65  best dist loss : 0.0, best weight: 96.878125 
+total test number:  20
+total_success_number:  20
+attack success rate:  1.0
+Test index: 62
+tensor([82]) 87
+total test number:  20
+total_success_number:  20
+attack success rate:  1.0
+Test index: 63
+tensor([20]) 20
+The original label of test data: 20
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+Successfully attack 1/1   pred: 85  best dist loss : 0.0, best weight: 96.878125 
+total test number:  21
+total_success_number:  21
+attack success rate:  1.0
+Test index: 64
+tensor([1]) 1
+The original label of test data: 1
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 3.16355, dist loss: 0.00000, adv_loss: 3.16355 , pred: 39
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 3.16355, dist loss: 0.00000, adv_loss: 3.16355 , pred: 39
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 3.16355, dist loss: 0.00000, adv_loss: 3.16355 , pred: 39
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 3.16355, dist loss: 0.00000, adv_loss: 3.16355 , pred: 39
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 3.16355, dist loss: 0.00000, adv_loss: 3.16355 , pred: 39
+Successfully attack 1/1   pred: 39  best dist loss : 0.0, best weight: 96.878125 
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 65
+tensor([88]) 18
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 66
+tensor([103]) 12
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 67
+tensor([53]) 81
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 68
+tensor([5]) 21
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 69
+tensor([1]) 16
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 70
+tensor([40]) 39
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 71
+tensor([19]) 10
+total test number:  22
+total_success_number:  22
+attack success rate:  1.0
+Test index: 72
+tensor([42]) 42
+The original label of test data: 42
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 7.73252, dist loss: 0.00000, adv_loss: 7.73252 , pred: 39
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 7.73252, dist loss: 0.00000, adv_loss: 7.73252 , pred: 39
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 7.73252, dist loss: 0.00000, adv_loss: 7.73252 , pred: 39
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 7.73252, dist loss: 0.00000, adv_loss: 7.73252 , pred: 39
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 7.73252, dist loss: 0.00000, adv_loss: 7.73252 , pred: 39
+Successfully attack 1/1   pred: 39  best dist loss : 0.0, best weight: 96.878125 
+total test number:  23
+total_success_number:  23
+attack success rate:  1.0
+Test index: 73
+tensor([97]) 97
+The original label of test data: 97
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 81
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 81
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 81
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 81
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 81
+Successfully attack 1/1   pred: 81  best dist loss : 0.0, best weight: 96.878125 
+total test number:  24
+total_success_number:  24
+attack success rate:  1.0
+Test index: 74
+tensor([7]) 1
+total test number:  24
+total_success_number:  24
+attack success rate:  1.0
+Test index: 75
+tensor([33]) 21
+total test number:  24
+total_success_number:  24
+attack success rate:  1.0
+Test index: 76
+tensor([45]) 45
+The original label of test data: 45
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 5.39807, dist loss: 0.00000, adv_loss: 5.39807 , pred: 85
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 5.39807, dist loss: 0.00000, adv_loss: 5.39807 , pred: 85
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 5.39807, dist loss: 0.00000, adv_loss: 5.39807 , pred: 85
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 5.39807, dist loss: 0.00000, adv_loss: 5.39807 , pred: 85
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 5.39807, dist loss: 0.00000, adv_loss: 5.39807 , pred: 85
+Successfully attack 1/1   pred: 85  best dist loss : 0.0, best weight: 96.878125 
+total test number:  25
+total_success_number:  25
+attack success rate:  1.0
+Test index: 77
+tensor([1]) 1
+The original label of test data: 1
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+Successfully attack 1/1   pred: 85  best dist loss : 0.0, best weight: 96.878125 
+total test number:  26
+total_success_number:  26
+attack success rate:  1.0
+Test index: 78
+tensor([95]) 18
+total test number:  26
+total_success_number:  26
+attack success rate:  1.0
+Test index: 79
+tensor([97]) 97
+The original label of test data: 97
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 3.09970, dist loss: 0.00000, adv_loss: 3.09970 , pred: 75
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 3.09970, dist loss: 0.00000, adv_loss: 3.09970 , pred: 75
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 3.09970, dist loss: 0.00000, adv_loss: 3.09970 , pred: 75
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 3.09970, dist loss: 0.00000, adv_loss: 3.09970 , pred: 75
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 3.09970, dist loss: 0.00000, adv_loss: 3.09970 , pred: 75
+Successfully attack 1/1   pred: 75  best dist loss : 0.0, best weight: 96.878125 
+total test number:  27
+total_success_number:  27
+attack success rate:  1.0
+Test index: 80
+tensor([40]) 102
+total test number:  27
+total_success_number:  27
+attack success rate:  1.0
+Test index: 81
+tensor([56]) 59
+total test number:  27
+total_success_number:  27
+attack success rate:  1.0
+Test index: 82
+tensor([93]) 93
+The original label of test data: 93
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 85
+Successfully attack 1/1   pred: 85  best dist loss : 0.0, best weight: 96.878125 
+total test number:  28
+total_success_number:  28
+attack success rate:  1.0
+Test index: 83
+tensor([89]) 89
+The original label of test data: 89
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  29
+total_success_number:  29
+attack success rate:  1.0
+Test index: 84
+tensor([17]) 17
+The original label of test data: 17
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 30
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 30
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 30
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 30
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 30
+Successfully attack 1/1   pred: 30  best dist loss : 0.0, best weight: 96.878125 
+total test number:  30
+total_success_number:  30
+attack success rate:  1.0
+Test index: 85
+tensor([65]) 65
+The original label of test data: 65
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 15.05322, dist loss: 0.00000, adv_loss: 15.05322 , pred: 65
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 15.05322, dist loss: 0.00000, adv_loss: 15.05322 , pred: 65
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 15.05322, dist loss: 0.00000, adv_loss: 15.05322 , pred: 65
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 15.05322, dist loss: 0.00000, adv_loss: 15.05322 , pred: 65
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 15.05322, dist loss: 0.00000, adv_loss: 15.05322 , pred: 65
+Successfully attack 1/1   pred: 16  best dist loss : 0.0016999999061226845, best weight: 96.878125 
+total test number:  31
+total_success_number:  31
+attack success rate:  1.0
+Test index: 86
+tensor([74]) 74
+The original label of test data: 74
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 80
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 80
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 80
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 80
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 80
+Successfully attack 1/1   pred: 80  best dist loss : 0.0, best weight: 96.878125 
+total test number:  32
+total_success_number:  32
+attack success rate:  1.0
+Test index: 87
+tensor([24]) 75
+total test number:  32
+total_success_number:  32
+attack success rate:  1.0
+Test index: 88
+tensor([7]) 39
+total test number:  32
+total_success_number:  32
+attack success rate:  1.0
+Test index: 89
+tensor([87]) 87
+The original label of test data: 87
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 0.00000, dist loss: 0.00000, adv_loss: 0.00000 , pred: 16
+Successfully attack 1/1   pred: 16  best dist loss : 0.0, best weight: 96.878125 
+total test number:  33
+total_success_number:  33
+attack success rate:  1.0
+Test index: 90
+tensor([57]) 89
+total test number:  33
+total_success_number:  33
+attack success rate:  1.0
+Test index: 91
+tensor([88]) 29
+total test number:  33
+total_success_number:  33
+attack success rate:  1.0

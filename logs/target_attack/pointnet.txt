@@ -1,0 +1,1018 @@
+binary step: 2   iteration: 900 current weight: 75.025
+loss: 0.07447, dist loss: 0.00099, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 0 current weight: 87.5125
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 3   iteration: 100 current weight: 87.5125
+loss: 0.05442, dist loss: 0.00062, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 200 current weight: 87.5125
+loss: 0.05391, dist loss: 0.00062, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 300 current weight: 87.5125
+loss: 0.05236, dist loss: 0.00060, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 400 current weight: 87.5125
+loss: 0.05077, dist loss: 0.00058, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 500 current weight: 87.5125
+loss: 0.04921, dist loss: 0.00056, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 600 current weight: 87.5125
+loss: 0.04772, dist loss: 0.00055, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 700 current weight: 87.5125
+loss: 0.04629, dist loss: 0.00053, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 800 current weight: 87.5125
+loss: 0.04493, dist loss: 0.00051, adv_loss: 0.00000 , pred: 27
+binary step: 3   iteration: 900 current weight: 87.5125
+loss: 0.04360, dist loss: 0.00050, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 0 current weight: 93.75625
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 4   iteration: 100 current weight: 93.75625
+loss: 0.05164, dist loss: 0.00055, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 200 current weight: 93.75625
+loss: 0.05045, dist loss: 0.00054, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 300 current weight: 93.75625
+loss: 0.04886, dist loss: 0.00052, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 400 current weight: 93.75625
+loss: 0.04719, dist loss: 0.00050, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 500 current weight: 93.75625
+loss: 0.04553, dist loss: 0.00049, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 600 current weight: 93.75625
+loss: 0.04391, dist loss: 0.00047, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 700 current weight: 93.75625
+loss: 0.04236, dist loss: 0.00045, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 800 current weight: 93.75625
+loss: 0.04087, dist loss: 0.00044, adv_loss: 0.00000 , pred: 27
+binary step: 4   iteration: 900 current weight: 93.75625
+loss: 0.03942, dist loss: 0.00042, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 0 current weight: 90.634375
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 5   iteration: 100 current weight: 90.634375
+loss: 0.05907, dist loss: 0.00065, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 200 current weight: 90.634375
+loss: 0.05931, dist loss: 0.00065, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 300 current weight: 90.634375
+loss: 0.05804, dist loss: 0.00064, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 400 current weight: 90.634375
+loss: 0.05670, dist loss: 0.00063, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 500 current weight: 90.634375
+loss: 0.05536, dist loss: 0.00061, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 600 current weight: 90.634375
+loss: 0.05404, dist loss: 0.00060, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 700 current weight: 90.634375
+loss: 0.05275, dist loss: 0.00058, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 800 current weight: 90.634375
+loss: 0.05148, dist loss: 0.00057, adv_loss: 0.00000 , pred: 27
+binary step: 5   iteration: 900 current weight: 90.634375
+loss: 0.41058, dist loss: 0.00453, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 0 current weight: 92.1953125
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 6   iteration: 100 current weight: 92.1953125
+loss: 0.07869, dist loss: 0.00085, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 200 current weight: 92.1953125
+loss: 0.09439, dist loss: 0.00102, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 300 current weight: 92.1953125
+loss: 0.09210, dist loss: 0.00100, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 400 current weight: 92.1953125
+loss: 0.08959, dist loss: 0.00097, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 500 current weight: 92.1953125
+loss: 0.08696, dist loss: 0.00094, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 600 current weight: 92.1953125
+loss: 0.08429, dist loss: 0.00091, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 700 current weight: 92.1953125
+loss: 0.08160, dist loss: 0.00089, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 800 current weight: 92.1953125
+loss: 0.07894, dist loss: 0.00086, adv_loss: 0.00000 , pred: 27
+binary step: 6   iteration: 900 current weight: 92.1953125
+loss: 0.07632, dist loss: 0.00083, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 0 current weight: 92.97578125
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 7   iteration: 100 current weight: 92.97578125
+loss: 0.04468, dist loss: 0.00048, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 200 current weight: 92.97578125
+loss: 0.04372, dist loss: 0.00047, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 300 current weight: 92.97578125
+loss: 0.04236, dist loss: 0.00046, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 400 current weight: 92.97578125
+loss: 0.04094, dist loss: 0.00044, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 500 current weight: 92.97578125
+loss: 0.03953, dist loss: 0.00043, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 600 current weight: 92.97578125
+loss: 0.03815, dist loss: 0.00041, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 700 current weight: 92.97578125
+loss: 0.03682, dist loss: 0.00040, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 800 current weight: 92.97578125
+loss: 0.25961, dist loss: 0.00279, adv_loss: 0.00000 , pred: 27
+binary step: 7   iteration: 900 current weight: 92.97578125
+loss: 0.25662, dist loss: 0.00276, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 0 current weight: 92.585546875
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 8   iteration: 100 current weight: 92.585546875
+loss: 0.07514, dist loss: 0.00081, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 200 current weight: 92.585546875
+loss: 0.07455, dist loss: 0.00081, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 300 current weight: 92.585546875
+loss: 0.07293, dist loss: 0.00079, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 400 current weight: 92.585546875
+loss: 0.07114, dist loss: 0.00077, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 500 current weight: 92.585546875
+loss: 0.06926, dist loss: 0.00075, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 600 current weight: 92.585546875
+loss: 0.06732, dist loss: 0.00073, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 700 current weight: 92.585546875
+loss: 0.06535, dist loss: 0.00071, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 800 current weight: 92.585546875
+loss: 0.06336, dist loss: 0.00068, adv_loss: 0.00000 , pred: 27
+binary step: 8   iteration: 900 current weight: 92.585546875
+loss: 0.06137, dist loss: 0.00066, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 0 current weight: 92.7806640625
+loss: 22.88652, dist loss: 0.00000, adv_loss: 22.88652 , pred: 16
+binary step: 9   iteration: 100 current weight: 92.7806640625
+loss: 0.04443, dist loss: 0.00048, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 200 current weight: 92.7806640625
+loss: 0.04353, dist loss: 0.00047, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 300 current weight: 92.7806640625
+loss: 0.04224, dist loss: 0.00046, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 400 current weight: 92.7806640625
+loss: 0.04087, dist loss: 0.00044, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 500 current weight: 92.7806640625
+loss: 0.03949, dist loss: 0.00043, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 600 current weight: 92.7806640625
+loss: 0.03815, dist loss: 0.00041, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 700 current weight: 92.7806640625
+loss: 0.45738, dist loss: 0.00493, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 800 current weight: 92.7806640625
+loss: 0.45791, dist loss: 0.00494, adv_loss: 0.00000 , pred: 27
+binary step: 9   iteration: 900 current weight: 92.7806640625
+loss: 0.44868, dist loss: 0.00484, adv_loss: 0.00000 , pred: 27
+Successfully attack 1/1   pred: 27  best dist loss : 9.379246330354363e-05, best weight: 92.68310546875 
+total test number:  4
+total_success_number:  2
+attack success rate:  0.5
+Test index: 7
+tensor([54]) 87
+total test number:  4
+total_success_number:  2
+attack success rate:  0.5
+Test index: 8
+tensor([88]) 18
+total test number:  4
+total_success_number:  2
+attack success rate:  0.5
+Test index: 9
+tensor([50]) 78
+total test number:  4
+total_success_number:  2
+attack success rate:  0.5
+Test index: 10
+tensor([101]) 18
+total test number:  4
+total_success_number:  2
+attack success rate:  0.5
+Test index: 11
+tensor([2]) 4
+total test number:  4
+total_success_number:  2
+attack success rate:  0.5
+Test index: 12
+tensor([95]) 95
+The original label of test data: 95
+Target label: 99
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 0   iteration: 100 current weight: 0.1
+loss: 0.00001, dist loss: 0.00012, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 200 current weight: 0.1
+loss: 5.01863, dist loss: 0.00013, adv_loss: 5.01862 , pred: 99
+binary step: 0   iteration: 300 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 400 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 500 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 600 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 700 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 800 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 0   iteration: 900 current weight: 0.1
+loss: 0.00001, dist loss: 0.00006, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 1   iteration: 100 current weight: 50.05
+loss: 0.00342, dist loss: 0.00007, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 200 current weight: 50.05
+loss: 0.00452, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 300 current weight: 50.05
+loss: 0.00449, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 400 current weight: 50.05
+loss: 0.00444, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 500 current weight: 50.05
+loss: 0.00439, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 600 current weight: 50.05
+loss: 0.00433, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 700 current weight: 50.05
+loss: 0.00427, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 800 current weight: 50.05
+loss: 0.00420, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 1   iteration: 900 current weight: 50.05
+loss: 0.00412, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 0 current weight: 75.025
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 2   iteration: 100 current weight: 75.025
+loss: 0.01014, dist loss: 0.00014, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 200 current weight: 75.025
+loss: 2.60319, dist loss: 0.00008, adv_loss: 2.59734 , pred: 99
+binary step: 2   iteration: 300 current weight: 75.025
+loss: 2.59602, dist loss: 0.00012, adv_loss: 2.58701 , pred: 99
+binary step: 2   iteration: 400 current weight: 75.025
+loss: 0.00581, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 500 current weight: 75.025
+loss: 0.00581, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 600 current weight: 75.025
+loss: 0.00573, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 700 current weight: 75.025
+loss: 0.00564, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 800 current weight: 75.025
+loss: 0.00554, dist loss: 0.00007, adv_loss: 0.00000 , pred: 99
+binary step: 2   iteration: 900 current weight: 75.025
+loss: 0.00544, dist loss: 0.00007, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 0 current weight: 62.5375
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 3   iteration: 100 current weight: 62.5375
+loss: 0.01647, dist loss: 0.00026, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 200 current weight: 62.5375
+loss: 0.01628, dist loss: 0.00026, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 300 current weight: 62.5375
+loss: 0.01605, dist loss: 0.00026, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 400 current weight: 62.5375
+loss: 0.01578, dist loss: 0.00025, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 500 current weight: 62.5375
+loss: 0.01550, dist loss: 0.00025, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 600 current weight: 62.5375
+loss: 0.01521, dist loss: 0.00024, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 700 current weight: 62.5375
+loss: 0.01491, dist loss: 0.00024, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 800 current weight: 62.5375
+loss: 0.01460, dist loss: 0.00023, adv_loss: 0.00000 , pred: 99
+binary step: 3   iteration: 900 current weight: 62.5375
+loss: 0.01429, dist loss: 0.00023, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 0 current weight: 56.29375
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 4   iteration: 100 current weight: 56.29375
+loss: 0.01989, dist loss: 0.00035, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 200 current weight: 56.29375
+loss: 0.01969, dist loss: 0.00035, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 300 current weight: 56.29375
+loss: 0.01940, dist loss: 0.00034, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 400 current weight: 56.29375
+loss: 0.01907, dist loss: 0.00034, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 500 current weight: 56.29375
+loss: 0.01872, dist loss: 0.00033, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 600 current weight: 56.29375
+loss: 0.01834, dist loss: 0.00033, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 700 current weight: 56.29375
+loss: 0.01795, dist loss: 0.00032, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 800 current weight: 56.29375
+loss: 0.01754, dist loss: 0.00031, adv_loss: 0.00000 , pred: 99
+binary step: 4   iteration: 900 current weight: 56.29375
+loss: 0.01711, dist loss: 0.00030, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 0 current weight: 53.171875
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 5   iteration: 100 current weight: 53.171875
+loss: 0.03321, dist loss: 0.00062, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 200 current weight: 53.171875
+loss: 0.03397, dist loss: 0.00064, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 300 current weight: 53.171875
+loss: 0.03361, dist loss: 0.00063, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 400 current weight: 53.171875
+loss: 0.03322, dist loss: 0.00062, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 500 current weight: 53.171875
+loss: 0.03279, dist loss: 0.00062, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 600 current weight: 53.171875
+loss: 0.03234, dist loss: 0.00061, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 700 current weight: 53.171875
+loss: 0.03188, dist loss: 0.00060, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 800 current weight: 53.171875
+loss: 0.03140, dist loss: 0.00059, adv_loss: 0.00000 , pred: 99
+binary step: 5   iteration: 900 current weight: 53.171875
+loss: 0.03090, dist loss: 0.00058, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 0 current weight: 51.6109375
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 6   iteration: 100 current weight: 51.6109375
+loss: 0.00442, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 200 current weight: 51.6109375
+loss: 0.00435, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 300 current weight: 51.6109375
+loss: 5.38907, dist loss: 0.00008, adv_loss: 5.38494 , pred: 99
+binary step: 6   iteration: 400 current weight: 51.6109375
+loss: 0.00461, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 500 current weight: 51.6109375
+loss: 0.00457, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 600 current weight: 51.6109375
+loss: 0.00452, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 700 current weight: 51.6109375
+loss: 0.00447, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 800 current weight: 51.6109375
+loss: 0.00441, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 6   iteration: 900 current weight: 51.6109375
+loss: 0.00435, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 0 current weight: 50.830468749999994
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 7   iteration: 100 current weight: 50.830468749999994
+loss: 0.00467, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 200 current weight: 50.830468749999994
+loss: 0.00475, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 300 current weight: 50.830468749999994
+loss: 0.00468, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 400 current weight: 50.830468749999994
+loss: 0.00460, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 500 current weight: 50.830468749999994
+loss: 0.00450, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 600 current weight: 50.830468749999994
+loss: 0.00440, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 700 current weight: 50.830468749999994
+loss: 0.00429, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 800 current weight: 50.830468749999994
+loss: 0.00417, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 7   iteration: 900 current weight: 50.830468749999994
+loss: 0.00405, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 0 current weight: 50.440234374999996
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 8   iteration: 100 current weight: 50.440234374999996
+loss: 0.37680, dist loss: 0.00008, adv_loss: 0.37265 , pred: 99
+binary step: 8   iteration: 200 current weight: 50.440234374999996
+loss: 0.00408, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 300 current weight: 50.440234374999996
+loss: 0.00411, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 400 current weight: 50.440234374999996
+loss: 0.00407, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 500 current weight: 50.440234374999996
+loss: 0.00403, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 600 current weight: 50.440234374999996
+loss: 0.00399, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 700 current weight: 50.440234374999996
+loss: 0.00394, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 800 current weight: 50.440234374999996
+loss: 0.00389, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 8   iteration: 900 current weight: 50.440234374999996
+loss: 0.00383, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 0 current weight: 50.63535156249999
+loss: 24.46898, dist loss: 0.00000, adv_loss: 24.46898 , pred: 53
+binary step: 9   iteration: 100 current weight: 50.63535156249999
+loss: 0.00428, dist loss: 0.00008, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 200 current weight: 50.63535156249999
+loss: 0.00454, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 300 current weight: 50.63535156249999
+loss: 0.00352, dist loss: 0.00007, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 400 current weight: 50.63535156249999
+loss: 14.50611, dist loss: 0.00012, adv_loss: 14.50029 , pred: 65
+binary step: 9   iteration: 500 current weight: 50.63535156249999
+loss: 0.00549, dist loss: 0.00011, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 600 current weight: 50.63535156249999
+loss: 0.00442, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 700 current weight: 50.63535156249999
+loss: 0.00473, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 800 current weight: 50.63535156249999
+loss: 0.00468, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+binary step: 9   iteration: 900 current weight: 50.63535156249999
+loss: 0.00463, dist loss: 0.00009, adv_loss: 0.00000 , pred: 99
+Successfully attack 1/1   pred: 99  best dist loss : 3.326616933918558e-05, best weight: 50.53779296875 
+total test number:  5
+total_success_number:  3
+attack success rate:  0.6
+Test index: 13
+tensor([56]) 79
+total test number:  5
+total_success_number:  3
+attack success rate:  0.6
+Test index: 14
+tensor([84]) 84
+The original label of test data: 84
+Target label: 17
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 0   iteration: 100 current weight: 0.1
+loss: 61.79778, dist loss: 0.00014, adv_loss: 61.79776 , pred: 2
+binary step: 0   iteration: 200 current weight: 0.1
+loss: 49.32313, dist loss: 0.00008, adv_loss: 49.32312 , pred: 35
+binary step: 0   iteration: 300 current weight: 0.1
+loss: 39.44263, dist loss: 0.00007, adv_loss: 39.44263 , pred: 2
+binary step: 0   iteration: 400 current weight: 0.1
+loss: 22.81623, dist loss: 0.00002, adv_loss: 22.81623 , pred: 58
+binary step: 0   iteration: 500 current weight: 0.1
+loss: 32.98519, dist loss: 0.00005, adv_loss: 32.98518 , pred: 53
+binary step: 0   iteration: 600 current weight: 0.1
+loss: 87.27857, dist loss: 0.00012, adv_loss: 87.27856 , pred: 64
+binary step: 0   iteration: 700 current weight: 0.1
+loss: 39.79464, dist loss: 0.00009, adv_loss: 39.79463 , pred: 53
+binary step: 0   iteration: 800 current weight: 0.1
+loss: 28.10426, dist loss: 0.00006, adv_loss: 28.10425 , pred: 2
+binary step: 0   iteration: 900 current weight: 0.1
+loss: 24.16602, dist loss: 0.00007, adv_loss: 24.16601 , pred: 36
+binary step: 1   iteration: 0 current weight: 0.05
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 1   iteration: 100 current weight: 0.05
+loss: 34.62428, dist loss: 0.00012, adv_loss: 34.62427 , pred: 36
+binary step: 1   iteration: 200 current weight: 0.05
+loss: 52.56372, dist loss: 0.00014, adv_loss: 52.56371 , pred: 16
+binary step: 1   iteration: 300 current weight: 0.05
+loss: 39.61454, dist loss: 0.00009, adv_loss: 39.61454 , pred: 2
+binary step: 1   iteration: 400 current weight: 0.05
+loss: 33.48177, dist loss: 0.00007, adv_loss: 33.48176 , pred: 35
+binary step: 1   iteration: 500 current weight: 0.05
+loss: 46.62702, dist loss: 0.00010, adv_loss: 46.62701 , pred: 64
+binary step: 1   iteration: 600 current weight: 0.05
+loss: 18.71703, dist loss: 0.00001, adv_loss: 18.71703 , pred: 58
+binary step: 1   iteration: 700 current weight: 0.05
+loss: 22.40147, dist loss: 0.00001, adv_loss: 22.40147 , pred: 2
+binary step: 1   iteration: 800 current weight: 0.05
+loss: 16.81480, dist loss: 0.00002, adv_loss: 16.81480 , pred: 19
+binary step: 1   iteration: 900 current weight: 0.05
+loss: 16.19599, dist loss: 0.00001, adv_loss: 16.19599 , pred: 36
+binary step: 2   iteration: 0 current weight: 0.025
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 2   iteration: 100 current weight: 0.025
+loss: 36.17411, dist loss: 0.00011, adv_loss: 36.17411 , pred: 2
+binary step: 2   iteration: 200 current weight: 0.025
+loss: 33.85687, dist loss: 0.00004, adv_loss: 33.85687 , pred: 42
+binary step: 2   iteration: 300 current weight: 0.025
+loss: 39.38295, dist loss: 0.00009, adv_loss: 39.38295 , pred: 81
+binary step: 2   iteration: 400 current weight: 0.025
+loss: 48.03895, dist loss: 0.00008, adv_loss: 48.03895 , pred: 58
+binary step: 2   iteration: 500 current weight: 0.025
+loss: 25.29367, dist loss: 0.00008, adv_loss: 25.29367 , pred: 36
+binary step: 2   iteration: 600 current weight: 0.025
+loss: 23.93454, dist loss: 0.00006, adv_loss: 23.93454 , pred: 4
+binary step: 2   iteration: 700 current weight: 0.025
+loss: 16.15747, dist loss: 0.00008, adv_loss: 16.15746 , pred: 2
+binary step: 2   iteration: 800 current weight: 0.025
+loss: 13.82786, dist loss: 0.00008, adv_loss: 13.82786 , pred: 105
+binary step: 2   iteration: 900 current weight: 0.025
+loss: 18.69390, dist loss: 0.00008, adv_loss: 18.69390 , pred: 4
+binary step: 3   iteration: 0 current weight: 0.0125
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 3   iteration: 100 current weight: 0.0125
+loss: 41.63448, dist loss: 0.00014, adv_loss: 41.63448 , pred: 36
+binary step: 3   iteration: 200 current weight: 0.0125
+loss: 39.45748, dist loss: 0.00008, adv_loss: 39.45748 , pred: 53
+binary step: 3   iteration: 300 current weight: 0.0125
+loss: 39.53633, dist loss: 0.00014, adv_loss: 39.53633 , pred: 36
+binary step: 3   iteration: 400 current weight: 0.0125
+loss: 22.52838, dist loss: 0.00007, adv_loss: 22.52838 , pred: 36
+binary step: 3   iteration: 500 current weight: 0.0125
+loss: 20.17459, dist loss: 0.00004, adv_loss: 20.17459 , pred: 36
+binary step: 3   iteration: 600 current weight: 0.0125
+loss: 39.33424, dist loss: 0.00007, adv_loss: 39.33424 , pred: 36
+binary step: 3   iteration: 700 current weight: 0.0125
+loss: 30.33628, dist loss: 0.00004, adv_loss: 30.33628 , pred: 2
+binary step: 3   iteration: 800 current weight: 0.0125
+loss: 20.02829, dist loss: 0.00004, adv_loss: 20.02829 , pred: 4
+binary step: 3   iteration: 900 current weight: 0.0125
+loss: 22.70469, dist loss: 0.00009, adv_loss: 22.70469 , pred: 64
+binary step: 4   iteration: 0 current weight: 0.018750000000000003
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 4   iteration: 100 current weight: 0.018750000000000003
+loss: 47.49670, dist loss: 0.00014, adv_loss: 47.49670 , pred: 36
+binary step: 4   iteration: 200 current weight: 0.018750000000000003
+loss: 44.79919, dist loss: 0.00012, adv_loss: 44.79919 , pred: 64
+binary step: 4   iteration: 300 current weight: 0.018750000000000003
+loss: 47.10112, dist loss: 0.00010, adv_loss: 47.10112 , pred: 2
+binary step: 4   iteration: 400 current weight: 0.018750000000000003
+loss: 77.07971, dist loss: 0.00012, adv_loss: 77.07971 , pred: 53
+binary step: 4   iteration: 500 current weight: 0.018750000000000003
+loss: 74.84774, dist loss: 0.00010, adv_loss: 74.84774 , pred: 2
+binary step: 4   iteration: 600 current weight: 0.018750000000000003
+loss: 55.60644, dist loss: 0.00013, adv_loss: 55.60644 , pred: 2
+binary step: 4   iteration: 700 current weight: 0.018750000000000003
+loss: 36.98709, dist loss: 0.00008, adv_loss: 36.98709 , pred: 64
+binary step: 4   iteration: 800 current weight: 0.018750000000000003
+loss: 25.03419, dist loss: 0.00005, adv_loss: 25.03419 , pred: 35
+binary step: 4   iteration: 900 current weight: 0.018750000000000003
+loss: 25.77231, dist loss: 0.00003, adv_loss: 25.77231 , pred: 35
+binary step: 5   iteration: 0 current weight: 0.015625
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 5   iteration: 100 current weight: 0.015625
+loss: 34.63684, dist loss: 0.00012, adv_loss: 34.63684 , pred: 36
+binary step: 5   iteration: 200 current weight: 0.015625
+loss: 37.20833, dist loss: 0.00008, adv_loss: 37.20833 , pred: 2
+binary step: 5   iteration: 300 current weight: 0.015625
+loss: 28.02752, dist loss: 0.00007, adv_loss: 28.02752 , pred: 36
+binary step: 5   iteration: 400 current weight: 0.015625
+loss: 27.13822, dist loss: 0.00008, adv_loss: 27.13822 , pred: 64
+binary step: 5   iteration: 500 current weight: 0.015625
+loss: 24.31010, dist loss: 0.00004, adv_loss: 24.31010 , pred: 35
+binary step: 5   iteration: 600 current weight: 0.015625
+loss: 29.96173, dist loss: 0.00005, adv_loss: 29.96173 , pred: 16
+binary step: 5   iteration: 700 current weight: 0.015625
+loss: 12.85395, dist loss: 0.00005, adv_loss: 12.85395 , pred: 4
+binary step: 5   iteration: 800 current weight: 0.015625
+loss: 27.30659, dist loss: 0.00006, adv_loss: 27.30659 , pred: 81
+binary step: 5   iteration: 900 current weight: 0.015625
+loss: 41.98520, dist loss: 0.00015, adv_loss: 41.98520 , pred: 36
+binary step: 6   iteration: 0 current weight: 0.0140625
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 6   iteration: 100 current weight: 0.0140625
+loss: 49.64880, dist loss: 0.00015, adv_loss: 49.64880 , pred: 64
+binary step: 6   iteration: 200 current weight: 0.0140625
+loss: 39.98145, dist loss: 0.00009, adv_loss: 39.98145 , pred: 35
+binary step: 6   iteration: 300 current weight: 0.0140625
+loss: 44.14248, dist loss: 0.00023, adv_loss: 44.14248 , pred: 2
+binary step: 6   iteration: 400 current weight: 0.0140625
+loss: 28.04258, dist loss: 0.00008, adv_loss: 28.04258 , pred: 2
+binary step: 6   iteration: 500 current weight: 0.0140625
+loss: 88.87993, dist loss: 0.00013, adv_loss: 88.87993 , pred: 53
+binary step: 6   iteration: 600 current weight: 0.0140625
+loss: 25.29870, dist loss: 0.00007, adv_loss: 25.29870 , pred: 36
+binary step: 6   iteration: 700 current weight: 0.0140625
+loss: 48.16431, dist loss: 0.00008, adv_loss: 48.16431 , pred: 2
+binary step: 6   iteration: 800 current weight: 0.0140625
+loss: 20.90645, dist loss: 0.00004, adv_loss: 20.90645 , pred: 64
+binary step: 6   iteration: 900 current weight: 0.0140625
+loss: 42.21971, dist loss: 0.00005, adv_loss: 42.21971 , pred: 64
+binary step: 7   iteration: 0 current weight: 0.013281250000000001
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 7   iteration: 100 current weight: 0.013281250000000001
+loss: 54.76429, dist loss: 0.00015, adv_loss: 54.76428 , pred: 64
+binary step: 7   iteration: 200 current weight: 0.013281250000000001
+loss: 35.35101, dist loss: 0.00008, adv_loss: 35.35101 , pred: 36
+binary step: 7   iteration: 300 current weight: 0.013281250000000001
+loss: 36.51333, dist loss: 0.00006, adv_loss: 36.51333 , pred: 2
+binary step: 7   iteration: 400 current weight: 0.013281250000000001
+loss: 58.14068, dist loss: 0.00012, adv_loss: 58.14068 , pred: 64
+binary step: 7   iteration: 500 current weight: 0.013281250000000001
+loss: 40.78041, dist loss: 0.00012, adv_loss: 40.78041 , pred: 2
+binary step: 7   iteration: 600 current weight: 0.013281250000000001
+loss: 27.11514, dist loss: 0.00004, adv_loss: 27.11514 , pred: 64
+binary step: 7   iteration: 700 current weight: 0.013281250000000001
+loss: 32.03131, dist loss: 0.00007, adv_loss: 32.03131 , pred: 64
+binary step: 7   iteration: 800 current weight: 0.013281250000000001
+loss: 21.11004, dist loss: 0.00002, adv_loss: 21.11004 , pred: 36
+binary step: 7   iteration: 900 current weight: 0.013281250000000001
+loss: 22.62792, dist loss: 0.00002, adv_loss: 22.62792 , pred: 36
+binary step: 8   iteration: 0 current weight: 0.012890625000000001
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 8   iteration: 100 current weight: 0.012890625000000001
+loss: 54.76429, dist loss: 0.00015, adv_loss: 54.76428 , pred: 64
+binary step: 8   iteration: 200 current weight: 0.012890625000000001
+loss: 57.76034, dist loss: 0.00006, adv_loss: 57.76034 , pred: 25
+binary step: 8   iteration: 300 current weight: 0.012890625000000001
+loss: 37.10100, dist loss: 0.00006, adv_loss: 37.10100 , pred: 35
+binary step: 8   iteration: 400 current weight: 0.012890625000000001
+loss: 38.28678, dist loss: 0.00005, adv_loss: 38.28678 , pred: 36
+binary step: 8   iteration: 500 current weight: 0.012890625000000001
+loss: 18.61961, dist loss: 0.00003, adv_loss: 18.61961 , pred: 36
+binary step: 8   iteration: 600 current weight: 0.012890625000000001
+loss: 22.38341, dist loss: 0.00002, adv_loss: 22.38341 , pred: 2
+binary step: 8   iteration: 700 current weight: 0.012890625000000001
+loss: 40.74275, dist loss: 0.00006, adv_loss: 40.74275 , pred: 2
+binary step: 8   iteration: 800 current weight: 0.012890625000000001
+loss: 33.98713, dist loss: 0.00009, adv_loss: 33.98713 , pred: 2
+binary step: 8   iteration: 900 current weight: 0.012890625000000001
+loss: 28.51670, dist loss: 0.00004, adv_loss: 28.51670 , pred: 2
+binary step: 9   iteration: 0 current weight: 0.0126953125
+loss: 30.16439, dist loss: 0.00000, adv_loss: 30.16439 , pred: 16
+binary step: 9   iteration: 100 current weight: 0.0126953125
+loss: 54.76429, dist loss: 0.00015, adv_loss: 54.76428 , pred: 64
+binary step: 9   iteration: 200 current weight: 0.0126953125
+loss: 57.76034, dist loss: 0.00006, adv_loss: 57.76034 , pred: 25
+binary step: 9   iteration: 300 current weight: 0.0126953125
+loss: 75.25836, dist loss: 0.00010, adv_loss: 75.25836 , pred: 64
+binary step: 9   iteration: 400 current weight: 0.0126953125
+loss: 54.68551, dist loss: 0.00010, adv_loss: 54.68551 , pred: 58
+binary step: 9   iteration: 500 current weight: 0.0126953125
+loss: 36.20542, dist loss: 0.00008, adv_loss: 36.20542 , pred: 36
+binary step: 9   iteration: 600 current weight: 0.0126953125
+loss: 40.26524, dist loss: 0.00009, adv_loss: 40.26524 , pred: 36
+binary step: 9   iteration: 700 current weight: 0.0126953125
+loss: 46.70337, dist loss: 0.00018, adv_loss: 46.70337 , pred: 2
+binary step: 9   iteration: 800 current weight: 0.0126953125
+loss: 24.78404, dist loss: 0.00004, adv_loss: 24.78404 , pred: 16
+binary step: 9   iteration: 900 current weight: 0.0126953125
+loss: 28.36536, dist loss: 0.00008, adv_loss: 28.36536 , pred: 2
+Successfully attack 1/1   pred: 17  best dist loss : 9.519560262560844e-05, best weight: 0.01259765625 
+total test number:  6
+total_success_number:  4
+attack success rate:  0.6666666666666666
+Test index: 15
+tensor([38]) 38
+The original label of test data: 38
+Target label: 77
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 0   iteration: 100 current weight: 0.1
+loss: 16.19453, dist loss: 0.00000, adv_loss: 16.19453 , pred: 16
+binary step: 0   iteration: 200 current weight: 0.1
+loss: 10.89684, dist loss: 0.00000, adv_loss: 10.89684 , pred: 28
+binary step: 0   iteration: 300 current weight: 0.1
+loss: 24.01431, dist loss: 0.00000, adv_loss: 24.01431 , pred: 97
+binary step: 0   iteration: 400 current weight: 0.1
+loss: 28.56978, dist loss: 0.00002, adv_loss: 28.56978 , pred: 27
+binary step: 0   iteration: 500 current weight: 0.1
+loss: 12.86854, dist loss: 0.00000, adv_loss: 12.86854 , pred: 16
+binary step: 0   iteration: 600 current weight: 0.1
+loss: 27.96630, dist loss: 0.00000, adv_loss: 27.96630 , pred: 5
+binary step: 0   iteration: 700 current weight: 0.1
+loss: 23.70987, dist loss: 0.00000, adv_loss: 23.70987 , pred: 16
+binary step: 0   iteration: 800 current weight: 0.1
+loss: 43.05945, dist loss: 0.00001, adv_loss: 43.05945 , pred: 65
+binary step: 0   iteration: 900 current weight: 0.1
+loss: 11.39865, dist loss: 0.00000, adv_loss: 11.39865 , pred: 18
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 1   iteration: 100 current weight: 50.05
+loss: 27.56205, dist loss: 0.00001, adv_loss: 27.56173 , pred: 16
+binary step: 1   iteration: 200 current weight: 50.05
+loss: 31.43432, dist loss: 0.00001, adv_loss: 31.43372 , pred: 16
+binary step: 1   iteration: 300 current weight: 50.05
+loss: 31.59970, dist loss: 0.00002, adv_loss: 31.59853 , pred: 81
+binary step: 1   iteration: 400 current weight: 50.05
+loss: 19.04317, dist loss: 0.00000, adv_loss: 19.04292 , pred: 75
+binary step: 1   iteration: 500 current weight: 50.05
+loss: 29.02864, dist loss: 0.00001, adv_loss: 29.02811 , pred: 16
+binary step: 1   iteration: 600 current weight: 50.05
+loss: 48.78683, dist loss: 0.00001, adv_loss: 48.78618 , pred: 16
+binary step: 1   iteration: 700 current weight: 50.05
+loss: 15.82100, dist loss: 0.00000, adv_loss: 15.82092 , pred: 16
+binary step: 1   iteration: 800 current weight: 50.05
+loss: 13.59805, dist loss: 0.00000, adv_loss: 13.59789 , pred: 28
+binary step: 1   iteration: 900 current weight: 50.05
+loss: 10.05898, dist loss: 0.00000, adv_loss: 10.05893 , pred: 30
+binary step: 2   iteration: 0 current weight: 25.075
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 2   iteration: 100 current weight: 25.075
+loss: 15.05512, dist loss: 0.00000, adv_loss: 15.05503 , pred: 52
+binary step: 2   iteration: 200 current weight: 25.075
+loss: 14.37000, dist loss: 0.00001, adv_loss: 14.36986 , pred: 1
+binary step: 2   iteration: 300 current weight: 25.075
+loss: 12.98676, dist loss: 0.00000, adv_loss: 12.98669 , pred: 87
+binary step: 2   iteration: 400 current weight: 25.075
+loss: 20.07968, dist loss: 0.00000, adv_loss: 20.07957 , pred: 74
+binary step: 2   iteration: 500 current weight: 25.075
+loss: 16.41405, dist loss: 0.00000, adv_loss: 16.41394 , pred: 16
+binary step: 2   iteration: 600 current weight: 25.075
+loss: 36.03078, dist loss: 0.00002, adv_loss: 36.03035 , pred: 73
+binary step: 2   iteration: 700 current weight: 25.075
+loss: 37.93881, dist loss: 0.00001, adv_loss: 37.93868 , pred: 27
+binary step: 2   iteration: 800 current weight: 25.075
+loss: 16.24131, dist loss: 0.00000, adv_loss: 16.24126 , pred: 16
+binary step: 2   iteration: 900 current weight: 25.075
+loss: 15.27339, dist loss: 0.00000, adv_loss: 15.27335 , pred: 88
+binary step: 3   iteration: 0 current weight: 12.5875
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 3   iteration: 100 current weight: 12.5875
+loss: 17.47855, dist loss: 0.00000, adv_loss: 17.47852 , pred: 33
+binary step: 3   iteration: 200 current weight: 12.5875
+loss: 18.36298, dist loss: 0.00000, adv_loss: 18.36292 , pred: 31
+binary step: 3   iteration: 300 current weight: 12.5875
+loss: 13.67393, dist loss: 0.00000, adv_loss: 13.67390 , pred: 16
+binary step: 3   iteration: 400 current weight: 12.5875
+loss: 11.40863, dist loss: 0.00000, adv_loss: 11.40861 , pred: 16
+binary step: 3   iteration: 500 current weight: 12.5875
+loss: 19.51034, dist loss: 0.00001, adv_loss: 19.51016 , pred: 16
+binary step: 3   iteration: 600 current weight: 12.5875
+loss: 19.43943, dist loss: 0.00000, adv_loss: 19.43938 , pred: 87
+binary step: 3   iteration: 700 current weight: 12.5875
+loss: 12.17983, dist loss: 0.00000, adv_loss: 12.17979 , pred: 16
+binary step: 3   iteration: 800 current weight: 12.5875
+loss: 26.56582, dist loss: 0.00001, adv_loss: 26.56573 , pred: 16
+binary step: 3   iteration: 900 current weight: 12.5875
+loss: 11.73229, dist loss: 0.00000, adv_loss: 11.73227 , pred: 15
+binary step: 4   iteration: 0 current weight: 18.83125
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 4   iteration: 100 current weight: 18.83125
+loss: 12.01486, dist loss: 0.00000, adv_loss: 12.01482 , pred: 16
+binary step: 4   iteration: 200 current weight: 18.83125
+loss: 9.20164, dist loss: 0.00000, adv_loss: 9.20161 , pred: 77
+binary step: 4   iteration: 300 current weight: 18.83125
+loss: 13.91629, dist loss: 0.00000, adv_loss: 13.91624 , pred: 28
+binary step: 4   iteration: 400 current weight: 18.83125
+loss: 41.39735, dist loss: 0.00002, adv_loss: 41.39703 , pred: 16
+binary step: 4   iteration: 500 current weight: 18.83125
+loss: 42.01814, dist loss: 0.00001, adv_loss: 42.01786 , pred: 41
+binary step: 4   iteration: 600 current weight: 18.83125
+loss: 12.05201, dist loss: 0.00000, adv_loss: 12.05199 , pred: 39
+binary step: 4   iteration: 700 current weight: 18.83125
+loss: 51.92437, dist loss: 0.00003, adv_loss: 51.92374 , pred: 81
+binary step: 4   iteration: 800 current weight: 18.83125
+loss: 21.17221, dist loss: 0.00000, adv_loss: 21.17215 , pred: 31
+binary step: 4   iteration: 900 current weight: 18.83125
+loss: 16.83210, dist loss: 0.00000, adv_loss: 16.83205 , pred: 16
+binary step: 5   iteration: 0 current weight: 15.709375000000001
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 5   iteration: 100 current weight: 15.709375000000001
+loss: 12.28914, dist loss: 0.00000, adv_loss: 12.28911 , pred: 39
+binary step: 5   iteration: 200 current weight: 15.709375000000001
+loss: 19.16263, dist loss: 0.00001, adv_loss: 19.16245 , pred: 16
+binary step: 5   iteration: 300 current weight: 15.709375000000001
+loss: 21.90918, dist loss: 0.00001, adv_loss: 21.90907 , pred: 27
+binary step: 5   iteration: 400 current weight: 15.709375000000001
+loss: 20.99619, dist loss: 0.00001, adv_loss: 20.99611 , pred: 41
+binary step: 5   iteration: 500 current weight: 15.709375000000001
+loss: 14.47482, dist loss: 0.00000, adv_loss: 14.47476 , pred: 28
+binary step: 5   iteration: 600 current weight: 15.709375000000001
+loss: 10.90815, dist loss: 0.00000, adv_loss: 10.90812 , pred: 16
+binary step: 5   iteration: 700 current weight: 15.709375000000001
+loss: 11.48126, dist loss: 0.00000, adv_loss: 11.48124 , pred: 39
+binary step: 5   iteration: 800 current weight: 15.709375000000001
+loss: 25.47172, dist loss: 0.00001, adv_loss: 25.47154 , pred: 79
+binary step: 5   iteration: 900 current weight: 15.709375000000001
+loss: 14.03566, dist loss: 0.00000, adv_loss: 14.03561 , pred: 39
+binary step: 6   iteration: 0 current weight: 14.1484375
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 6   iteration: 100 current weight: 14.1484375
+loss: 18.49014, dist loss: 0.00001, adv_loss: 18.49006 , pred: 41
+binary step: 6   iteration: 200 current weight: 14.1484375
+loss: 13.63651, dist loss: 0.00000, adv_loss: 13.63649 , pred: 53
+binary step: 6   iteration: 300 current weight: 14.1484375
+loss: 12.98016, dist loss: 0.00000, adv_loss: 12.98013 , pred: 11
+binary step: 6   iteration: 400 current weight: 14.1484375
+loss: 9.57180, dist loss: 0.00000, adv_loss: 9.57177 , pred: 77
+binary step: 6   iteration: 500 current weight: 14.1484375
+loss: 16.85871, dist loss: 0.00001, adv_loss: 16.85862 , pred: 41
+binary step: 6   iteration: 600 current weight: 14.1484375
+loss: 64.45393, dist loss: 0.00003, adv_loss: 64.45355 , pred: 99
+binary step: 6   iteration: 700 current weight: 14.1484375
+loss: 17.93568, dist loss: 0.00001, adv_loss: 17.93559 , pred: 30
+binary step: 6   iteration: 800 current weight: 14.1484375
+loss: 18.24958, dist loss: 0.00000, adv_loss: 18.24953 , pred: 12
+binary step: 6   iteration: 900 current weight: 14.1484375
+loss: 11.87816, dist loss: 0.00000, adv_loss: 11.87815 , pred: 15
+binary step: 7   iteration: 0 current weight: 14.92890625
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 7   iteration: 100 current weight: 14.92890625
+loss: 8.89075, dist loss: 0.00000, adv_loss: 8.89072 , pred: 77
+binary step: 7   iteration: 200 current weight: 14.92890625
+loss: 19.94468, dist loss: 0.00000, adv_loss: 19.94461 , pred: 16
+binary step: 7   iteration: 300 current weight: 14.92890625
+loss: 20.10844, dist loss: 0.00001, adv_loss: 20.10828 , pred: 16
+binary step: 7   iteration: 400 current weight: 14.92890625
+loss: 16.20253, dist loss: 0.00000, adv_loss: 16.20247 , pred: 16
+binary step: 7   iteration: 500 current weight: 14.92890625
+loss: 13.24601, dist loss: 0.00000, adv_loss: 13.24599 , pred: 84
+binary step: 7   iteration: 600 current weight: 14.92890625
+loss: 36.32550, dist loss: 0.00002, adv_loss: 36.32515 , pred: 16
+binary step: 7   iteration: 700 current weight: 14.92890625
+loss: 39.43983, dist loss: 0.00001, adv_loss: 39.43965 , pred: 79
+binary step: 7   iteration: 800 current weight: 14.92890625
+loss: 39.14189, dist loss: 0.00001, adv_loss: 39.14179 , pred: 16
+binary step: 7   iteration: 900 current weight: 14.92890625
+loss: 10.99938, dist loss: 0.00000, adv_loss: 10.99937 , pred: 30
+binary step: 8   iteration: 0 current weight: 14.538671875
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 8   iteration: 100 current weight: 14.538671875
+loss: 21.27569, dist loss: 0.00000, adv_loss: 21.27562 , pred: 16
+binary step: 8   iteration: 200 current weight: 14.538671875
+loss: 24.51335, dist loss: 0.00001, adv_loss: 24.51321 , pred: 70
+binary step: 8   iteration: 300 current weight: 14.538671875
+loss: 13.08251, dist loss: 0.00000, adv_loss: 13.08248 , pred: 28
+binary step: 8   iteration: 400 current weight: 14.538671875
+loss: 19.67195, dist loss: 0.00000, adv_loss: 19.67188 , pred: 5
+binary step: 8   iteration: 500 current weight: 14.538671875
+loss: 67.03261, dist loss: 0.00002, adv_loss: 67.03238 , pred: 27
+binary step: 8   iteration: 600 current weight: 14.538671875
+loss: 19.43016, dist loss: 0.00001, adv_loss: 19.43004 , pred: 79
+binary step: 8   iteration: 700 current weight: 14.538671875
+loss: 23.56197, dist loss: 0.00001, adv_loss: 23.56184 , pred: 16
+binary step: 8   iteration: 800 current weight: 14.538671875
+loss: 11.86539, dist loss: 0.00000, adv_loss: 11.86535 , pred: 16
+binary step: 8   iteration: 900 current weight: 14.538671875
+loss: 12.69916, dist loss: 0.00000, adv_loss: 12.69911 , pred: 12
+binary step: 9   iteration: 0 current weight: 14.3435546875
+loss: 14.71259, dist loss: 0.00000, adv_loss: 14.71259 , pred: 16
+binary step: 9   iteration: 100 current weight: 14.3435546875
+loss: 12.22821, dist loss: 0.00001, adv_loss: 12.22811 , pred: 16
+binary step: 9   iteration: 200 current weight: 14.3435546875
+loss: 17.51225, dist loss: 0.00001, adv_loss: 17.51217 , pred: 79
+binary step: 9   iteration: 300 current weight: 14.3435546875
+loss: 22.98652, dist loss: 0.00001, adv_loss: 22.98640 , pred: 16
+binary step: 9   iteration: 400 current weight: 14.3435546875
+loss: 14.77029, dist loss: 0.00000, adv_loss: 14.77022 , pred: 79
+binary step: 9   iteration: 500 current weight: 14.3435546875
+loss: 14.50730, dist loss: 0.00000, adv_loss: 14.50727 , pred: 18
+binary step: 9   iteration: 600 current weight: 14.3435546875
+loss: 44.20105, dist loss: 0.00002, adv_loss: 44.20082 , pred: 16
+binary step: 9   iteration: 700 current weight: 14.3435546875
+loss: 10.72485, dist loss: 0.00000, adv_loss: 10.72483 , pred: 15
+binary step: 9   iteration: 800 current weight: 14.3435546875
+loss: 17.00810, dist loss: 0.00000, adv_loss: 17.00806 , pred: 41
+binary step: 9   iteration: 900 current weight: 14.3435546875
+loss: 18.52112, dist loss: 0.00001, adv_loss: 18.52100 , pred: 16
+Successfully attack 1/1   pred: 77  best dist loss : 6.935911756045243e-07, best weight: 14.24599609375 
+total test number:  7
+total_success_number:  5
+attack success rate:  0.7142857142857143
+Test index: 16
+tensor([5]) 5
+The original label of test data: 5
+Target label: 41
+launch model cls/Bosphorus/PointNet_model_on_Bosphorus.pth
+binary step: 0   iteration: 0 current weight: 0.1
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 0   iteration: 100 current weight: 0.1
+loss: 7.27967, dist loss: 0.00020, adv_loss: 7.27965 , pred: 41
+binary step: 0   iteration: 200 current weight: 0.1
+loss: 0.00008, dist loss: 0.00082, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 300 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 400 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 500 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 600 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 700 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 800 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 0   iteration: 900 current weight: 0.1
+loss: 0.00009, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 0 current weight: 50.05
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 1   iteration: 100 current weight: 50.05
+loss: 46.29520, dist loss: 0.00023, adv_loss: 46.28388 , pred: 27
+binary step: 1   iteration: 200 current weight: 50.05
+loss: 0.04199, dist loss: 0.00084, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 300 current weight: 50.05
+loss: 0.05525, dist loss: 0.00110, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 400 current weight: 50.05
+loss: 0.05459, dist loss: 0.00109, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 500 current weight: 50.05
+loss: 0.05383, dist loss: 0.00108, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 600 current weight: 50.05
+loss: 0.05299, dist loss: 0.00106, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 700 current weight: 50.05
+loss: 0.05209, dist loss: 0.00104, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 800 current weight: 50.05
+loss: 0.05113, dist loss: 0.00102, adv_loss: 0.00000 , pred: 41
+binary step: 1   iteration: 900 current weight: 50.05
+loss: 0.05013, dist loss: 0.00100, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 0 current weight: 25.075
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 2   iteration: 100 current weight: 25.075
+loss: 6.71078, dist loss: 0.00053, adv_loss: 6.69753 , pred: 41
+binary step: 2   iteration: 200 current weight: 25.075
+loss: 0.02182, dist loss: 0.00087, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 300 current weight: 25.075
+loss: 0.02190, dist loss: 0.00087, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 400 current weight: 25.075
+loss: 0.02178, dist loss: 0.00087, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 500 current weight: 25.075
+loss: 0.02165, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 600 current weight: 25.075
+loss: 0.02150, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 700 current weight: 25.075
+loss: 0.02134, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 800 current weight: 25.075
+loss: 0.02116, dist loss: 0.00084, adv_loss: 0.00000 , pred: 41
+binary step: 2   iteration: 900 current weight: 25.075
+loss: 51.75154, dist loss: 0.00088, adv_loss: 51.72937 , pred: 99
+binary step: 3   iteration: 0 current weight: 12.5875
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 3   iteration: 100 current weight: 12.5875
+loss: 21.68760, dist loss: 0.00071, adv_loss: 21.67873 , pred: 27
+binary step: 3   iteration: 200 current weight: 12.5875
+loss: 0.01209, dist loss: 0.00096, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 300 current weight: 12.5875
+loss: 0.01206, dist loss: 0.00096, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 400 current weight: 12.5875
+loss: 0.01203, dist loss: 0.00096, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 500 current weight: 12.5875
+loss: 0.01199, dist loss: 0.00095, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 600 current weight: 12.5875
+loss: 0.01195, dist loss: 0.00095, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 700 current weight: 12.5875
+loss: 0.01191, dist loss: 0.00095, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 800 current weight: 12.5875
+loss: 0.01185, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 3   iteration: 900 current weight: 12.5875
+loss: 0.01180, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 0 current weight: 6.34375
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 4   iteration: 100 current weight: 6.34375
+loss: 0.00462, dist loss: 0.00073, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 200 current weight: 6.34375
+loss: 15.74662, dist loss: 0.00119, adv_loss: 15.73906 , pred: 27
+binary step: 4   iteration: 300 current weight: 6.34375
+loss: 0.00853, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 400 current weight: 6.34375
+loss: 0.00853, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 500 current weight: 6.34375
+loss: 0.00852, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 600 current weight: 6.34375
+loss: 0.00851, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 700 current weight: 6.34375
+loss: 0.00851, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 800 current weight: 6.34375
+loss: 0.00850, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 4   iteration: 900 current weight: 6.34375
+loss: 0.00849, dist loss: 0.00134, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 0 current weight: 3.221875
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 5   iteration: 100 current weight: 3.221875
+loss: 0.00190, dist loss: 0.00059, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 200 current weight: 3.221875
+loss: 0.00493, dist loss: 0.00153, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 300 current weight: 3.221875
+loss: 0.00525, dist loss: 0.00163, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 400 current weight: 3.221875
+loss: 0.00525, dist loss: 0.00163, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 500 current weight: 3.221875
+loss: 0.00524, dist loss: 0.00163, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 600 current weight: 3.221875
+loss: 0.00524, dist loss: 0.00163, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 700 current weight: 3.221875
+loss: 0.00524, dist loss: 0.00163, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 800 current weight: 3.221875
+loss: 0.00524, dist loss: 0.00163, adv_loss: 0.00000 , pred: 41
+binary step: 5   iteration: 900 current weight: 3.221875
+loss: 0.00523, dist loss: 0.00162, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 0 current weight: 1.6609375
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 6   iteration: 100 current weight: 1.6609375
+loss: 15.05153, dist loss: 0.00056, adv_loss: 15.05059 , pred: 99
+binary step: 6   iteration: 200 current weight: 1.6609375
+loss: 0.00156, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 300 current weight: 1.6609375
+loss: 0.00157, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 400 current weight: 1.6609375
+loss: 0.00157, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 500 current weight: 1.6609375
+loss: 0.00157, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 600 current weight: 1.6609375
+loss: 0.00157, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 700 current weight: 1.6609375
+loss: 0.00156, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 800 current weight: 1.6609375
+loss: 0.00156, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 6   iteration: 900 current weight: 1.6609375
+loss: 0.00156, dist loss: 0.00094, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 0 current weight: 0.88046875
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 7   iteration: 100 current weight: 0.88046875
+loss: 16.13707, dist loss: 0.00059, adv_loss: 16.13655 , pred: 27
+binary step: 7   iteration: 200 current weight: 0.88046875
+loss: 0.00079, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 300 current weight: 0.88046875
+loss: 0.00079, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 400 current weight: 0.88046875
+loss: 0.00078, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 500 current weight: 0.88046875
+loss: 0.00078, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 600 current weight: 0.88046875
+loss: 0.00078, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 700 current weight: 0.88046875
+loss: 0.00078, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 800 current weight: 0.88046875
+loss: 0.00078, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 7   iteration: 900 current weight: 0.88046875
+loss: 0.00078, dist loss: 0.00089, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 0 current weight: 0.490234375
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 8   iteration: 100 current weight: 0.490234375
+loss: 0.60108, dist loss: 0.00031, adv_loss: 0.60092 , pred: 41
+binary step: 8   iteration: 200 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 300 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 400 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 500 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 600 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 700 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 800 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 8   iteration: 900 current weight: 0.490234375
+loss: 0.00026, dist loss: 0.00054, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 0 current weight: 0.2951171875
+loss: 15.81544, dist loss: 0.00000, adv_loss: 15.81544 , pred: 5
+binary step: 9   iteration: 100 current weight: 0.2951171875
+loss: 0.28064, dist loss: 0.00037, adv_loss: 0.28053 , pred: 41
+binary step: 9   iteration: 200 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00085, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 300 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 400 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 500 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 600 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 700 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 800 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+binary step: 9   iteration: 900 current weight: 0.2951171875
+loss: 0.00025, dist loss: 0.00086, adv_loss: 0.00000 , pred: 41
+Successfully attack 1/1   pred: 41  best dist loss : 0.00011346954852342606, best weight: 0.19755859375 
+total test number:  8
+total_success_number:  6
+attack success rate:  0.75
+Test index: 17
+tensor([3]) 84
+total test number:  8
+total_success_number:  6
+attack success rate:  0.75
+[3]+  Stopped                 python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 10

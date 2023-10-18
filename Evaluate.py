@@ -49,9 +49,9 @@ def CW_attack_api(args, pt, label = 105):
     elif args.model == 'PointNet++Msg':
         model = PointNet_Msg(num_of_class, normal_channel=False)
     elif args.model == 'PointNet++Ssg':
-        model = PointNet_Ssg(num_of_class-1)
+        model = PointNet_Ssg(num_of_class)
     elif args.model == 'DGCNN':
-        model = DGCNN(args, output_channels=num_of_class-1).to(device)
+        model = DGCNN(args, output_channels=num_of_class).to(device)
     else:
         exit('wrong model type' )
         
@@ -129,7 +129,7 @@ if __name__ == "__main__":
                         help='Num of nearest neighbors to use in DGCNN')
     parser.add_argument('--kappa', type=float, default=10.,help='min margin in logits adv loss')   
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
-    parser.add_argument('--model', type=str, default='DGCNN', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++SSG',
+    parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
     parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
     parser.add_argument('--num_iter', type=int, default= 500, metavar='N',help='Number of iterations in each search step')
@@ -184,10 +184,8 @@ if __name__ == "__main__":
             print("Test index:", index)
             pt_ori = data[0][0].cpu().numpy()
             label_ori = data[1][0]
-            pt_normalized, _,_ = preprocess(pt_ori)
-            pred,_,_ = model(pt_normalized)
+            pred,_,_ = model(data[0][0].unsqueeze(0).permute(0,2,1).float().to(device))
             originalLabel = torch.argmax(pred).cpu().numpy()
-            print(label_ori, originalLabel)
             if originalLabel == label_ori.cpu().numpy(): # check whether the pretrained model can correctly predict the label or not 
                 print("The original label of test data:", originalLabel)
                 total_num = total_num + 1
