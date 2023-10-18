@@ -6,24 +6,19 @@ import argparse
 import numpy as np
 
 import torch
-import torch.backends.cudnn as cudnn
-import torch.distributed as dist
-from torch.utils.data import DataLoader
-from torch.utils.data.distributed import DistributedSampler
-from torch.nn.parallel import DistributedDataParallel
 
-import sys
-random.seed(7122)
 from CW_utils.basic_util import str2bool, set_seed
 from CW_SL_attack import CW
 from CW_utils.adv_utils import CrossEntropyAdvLoss, LogitsAdvLoss
-from CW_utils.dist_utils import L2Dist
-from CW_utils.dist_utils import ChamferDist, ChamferkNNDist
-from model.pointnet import PointNetCls, feature_transform_regularizer
+from model.pointnet import PointNetCls
 from model.pointnet2_MSG import PointNet_Msg
 from model.pointnet2_SSG import PointNet_Ssg
 from model.dgcnn import DGCNN
-device = torch.device("cpu")
+import os
+
+random.seed(7122)
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
+device = torch.device("cuda")
 def check_num_pc_changed(adv, ori):
     logits_mtx = np.logical_and.reduce(adv == ori, axis=1)
     return np.sum(logits_mtx == False)
@@ -107,11 +102,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Structured light attack')
     parser.add_argument('--adv_func', type=str, default='logits',choices=['logits', 'cross_entropy'],help='Adversarial loss function to use')
     parser.add_argument('--attack_lr', type=float, default=0.01,help='lr in CW optimization')    
-    parser.add_argument('--batch_size', type=int, default=-1, metavar='BS',help='Size of batch')    
+    parser.add_argument('--batch_size', type=int, default= 1, metavar='BS',help='Size of batch')    
     parser.add_argument('--binary_step', type=int, default=5, metavar='N',help='Binary search step')
     parser.add_argument('--data_root', type=str,default='data/attack_data.npz')    
     parser.add_argument('--dataset', type=str, default='Bosphorus', help="dataset: Bosphorus | Eurecom")    
-    parser.add_argument('--dist_function', default="L2Loss", type=str,
+    parser.add_argument('--dist_function', default="L1Loss", type=str,
                         help=' L1Loss, L2Loss, L2Loss_pt, Chamfer_pt, ChamferkNN_pt')
     parser.add_argument('--dropout', type=float, default=0.5, help='parameters in DGCNN: dropout rate')    
     parser.add_argument('--emb_dims', type=int, default=1024, metavar='N',
@@ -121,7 +116,7 @@ if __name__ == "__main__":
                         help='Num of nearest neighbors to use in DGCNN')
     parser.add_argument('--kappa', type=float, default=10.,help='min margin in logits adv loss')   
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
-    parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet2_MSG', 'PointNet2_SSG',
+    parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet++MSG', 'PointNet++SSG',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
     parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
     parser.add_argument('--num_iter', type=int, default= 100, metavar='N',help='Number of iterations in each search step')

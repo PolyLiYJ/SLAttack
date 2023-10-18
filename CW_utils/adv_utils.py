@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 class LogitsAdvLoss(nn.Module):
 
-    def __init__(self, kappa=0., whether_target= False, device=torch.device("cpu")):
+    def __init__(self, kappa=0., whether_target= False, device=torch.device("cuda")):
         """Adversarial function on logits.
         Args:
             kappa (float, optional): min margin. Defaults to 0..

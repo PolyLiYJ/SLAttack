@@ -24,7 +24,9 @@ from model.pointnet2_MSG import PointNet_Msg
 from model.pointnet2_SSG import PointNet_Ssg
 from model.dgcnn import DGCNN
 from dataset.bosphorus_dataset import Bosphorus_Dataset
-device = torch.device("cpu")
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="3"
+device = torch.device("cuda")
 def check_num_pc_changed(adv, ori):
     logits_mtx = np.logical_and.reduce(adv == ori, axis=1)
     return np.sum(logits_mtx == False)
@@ -47,11 +49,13 @@ def CW_attack_api(args, pt, label = 105):
     elif args.model == 'PointNet++Msg':
         model = PointNet_Msg(num_of_class, normal_channel=False)
     elif args.model == 'PointNet++Ssg':
-        model = PointNet_Ssg(num_of_class)
+        model = PointNet_Ssg(num_of_class-1)
     elif args.model == 'DGCNN':
-        model = DGCNN(args, output_channels=num_of_class).to(device)
+        model = DGCNN(args, output_channels=num_of_class-1).to(device)
     else:
-        exit('wrong model type')        
+        exit('wrong model type' )
+        
+    print(f"launch model cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth")        
         
     model.load_state_dict(
         torch.load(f'cls/{args.dataset}/{args.model}_model_on_{args.dataset}.pth', map_location=torch.device('cpu')) )
@@ -110,12 +114,14 @@ if __name__ == "__main__":
     parser.add_argument('--adv_func', type=str, default='logits',choices=['logits', 'cross_entropy'],help='Adversarial loss function to use')
     parser.add_argument('--attack_lr', type=float, default=0.001,help='lr in CW optimization')    
     parser.add_argument('--batch_size', type=int, default=-1, metavar='BS',help='Size of batch')    
-    parser.add_argument('--binary_step', type=int, default=10, metavar='N',help='Binary search step')
+    parser.add_argument('--binary_step', type=int, default=5, metavar='N',help='Binary search step')
     parser.add_argument('--data_root', type=str,default='data/attack_data.npz')    
     parser.add_argument('--dataset', type=str, default='Bosphorus', help="dataset: Bosphorus | Eurecom")    
     parser.add_argument('--dist_function', default="L2Loss", type=str,
                         help=' L1Loss, L2Loss, L2Loss_pt, Chamfer_pt, ChamferkNN_pt')
-    parser.add_argument('--dropout', type=float, default=0.5, help='parameters in DGCNN: dropout rate')    
+    parser.add_argument('--dropout', type=float, default=0.5, help='parameters in DGCNN: dropout rate')     
+    parser.add_argument('--early_break',action='store_true', default=False,
+                        help='whether early break')   
     parser.add_argument('--emb_dims', type=int, default=1024, metavar='N',
                         help='Dimension of embeddings in DGCNN')
     parser.add_argument('--feature_transform', type=str2bool, default=False,help='whether to use STN on features in PointNet')    
@@ -123,10 +129,10 @@ if __name__ == "__main__":
                         help='Num of nearest neighbors to use in DGCNN')
     parser.add_argument('--kappa', type=float, default=10.,help='min margin in logits adv loss')   
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
-    parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet2_MSG', 'PointNet2_SSG',
+    parser.add_argument('--model', type=str, default='DGCNN', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++SSG',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
     parser.add_argument('--num_points', type=int, default = 4000,help='num of points to use')
-    parser.add_argument('--num_iter', type=int, default= 300, metavar='N',help='Number of iterations in each search step')
+    parser.add_argument('--num_iter', type=int, default= 500, metavar='N',help='Number of iterations in each search step')
     
     parser.add_argument('--whether_1d', action='store_true', default=False, help='True for z perturbation, False for xyz perturbation')
     parser.add_argument('--whether_target', action='store_true', default=False, help='True for target attack, False for untarget attack')
@@ -136,8 +142,7 @@ if __name__ == "__main__":
                         help='3D transformation')
     parser.add_argument('--whether_resample',action='store_true', default=False,
                         help='whether resample using farest sampling')
-    parser.add_argument('--early_break',action='store_true', default=False,
-                        help='whether early break')
+
     args = parser.parse_args()
     '''
     set parameters
@@ -161,7 +166,7 @@ if __name__ == "__main__":
     elif args.model == 'PointNet++Ssg':
         model = PointNet_Ssg(num_of_class)
     elif args.model == 'DGCNN':
-        model = DGCNN(args, output_channels=num_of_class).to(device)
+        model = DGCNN(args, output_channels=num_of_class)
     else:
         exit('wrong model type')        
         
@@ -182,6 +187,7 @@ if __name__ == "__main__":
             pt_normalized, _,_ = preprocess(pt_ori)
             pred,_,_ = model(pt_normalized)
             originalLabel = torch.argmax(pred).cpu().numpy()
+            print(label_ori, originalLabel)
             if originalLabel == label_ori.cpu().numpy(): # check whether the pretrained model can correctly predict the label or not 
                 print("The original label of test data:", originalLabel)
                 total_num = total_num + 1
@@ -193,10 +199,6 @@ if __name__ == "__main__":
                     if targetLabel != originalLabel:
                         advPC, successnum, x_p_rebuild, out_prediction = CW_attack_api(args, pt = pt_ori, label = targetLabel)
                 if successnum > 0:
-                    adv_pt_normalized, _,_ = preprocess(advPC)
-                    pred, _, _ = model(adv_pt_normalized)
-                    predLabel = torch.argmax(pred).cpu().numpy()
-                    print("The pred label of adv data:", predLabel)
                     total_success_num = total_success_num + 1
             if total_num > 0:
                 print("total test number: ", total_num)

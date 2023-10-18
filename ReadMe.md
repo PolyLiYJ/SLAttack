@@ -88,16 +88,16 @@ python3 Test_CW_SL.py --dataset Bosphorus \
 
 ### To reproduce the attack success rate in our paper
 - Download the Bosphorus dataset at http://bosphorus.ee.boun.edu.tr/Home.aspx
-- Convet the dataset to text files, see dataset/readbnt.py. We use the farthest sampling from PointNet code to downsample the faces to 4000 points.
+- Convert the dataset to text files, see dataset/readbnt.py. We use the farthest sampling from PointNet code to downsample the faces to 4000 points.
 - Run untarget attack by
 ```
-python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100
+python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100 --early_break --binary_step 5
 ```
-- Run the target attack by
+- Run the target attack. It is suggested to set the device as cuda to accelerate the computation.
 ```
-python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 1000
+python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 10
 ```
-- To test ASR on different models, you can just change the args.model parameters. We have upload the pretrained PointNet, PointNet2, and DGCNN modelsto the cls/Bosphorus folder.
+- To test ASR on different models, you can just change the args.model parameters. We have upload the pretrained PointNet, PointNet2, and DGCNN models to the cls/Bosphorus folder.
 
 
 ### Get the structured light image

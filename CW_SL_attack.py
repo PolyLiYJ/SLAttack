@@ -15,7 +15,7 @@ from CW_utils.dist_utils import ChamferDist, ChamferkNNDist
 from math import exp,pow,sqrt
 from Visualization import showXYZ, mesh, plot,  gaussBlur
 import cv2
-device = torch.device("cpu")
+device = torch.device("cuda")
 out_root = 'test_face_data'
 
 class Clamp(torch.autograd.Function):
