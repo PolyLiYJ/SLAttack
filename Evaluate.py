@@ -131,7 +131,7 @@ if __name__ == "__main__":
     parser.add_argument('--local_rank', default=-1, type=int, help='node rank for distributed training') 
     parser.add_argument('--model', type=str, default='PointNet', metavar='N',choices=['PointNet', 'PointNet++Msg', 'PointNet++Ssg',
                                  'DGCNN'],help='Model to use, [pointnet, pointnet++, dgcnn, pointconv]')
-    parser.add_argument('--num_points', type=int, default = 512,help='num of points to use')
+    parser.add_argument('--num_points', type=int, default = 1024,help='num of points to use')
     parser.add_argument('--num_iter', type=int, default= 300, metavar='N',help='Number of iterations in each search step')
     
     parser.add_argument('--whether_1d', action='store_true', default=True, help='True for z perturbation, False for xyz perturbation')
