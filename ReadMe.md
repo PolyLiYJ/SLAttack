@@ -91,17 +91,17 @@ python3 Test_CW_SL.py --dataset Bosphorus \
 - Convert the dataset to text files, see dataset/readbnt.py. We use the farthest sampling from PointNet code to downsample the faces to 4000 points.
 - Run untarget attack by
 ```
-python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100 --early_break --binary_step 5 --dist_function L2Loss_pt
+python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100 --early_break --binary_step 5 --dist_function L2Loss
 ```
 - Run the target attack by set the --whether_target parameter. It is suggested to set the device as cuda to accelerate the computation.
 ```
-python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 300 --binary_step 5 --dist_function L2Loss_pt
+python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 300 --binary_step 5 --dist_function L2Loss
 ```
 
 ### Evaluate on different models
 - To test ASR on different models, you can just change the args.model parameters. We have upload the pretrained PointNet, PointNet++Msg, PointNet++Ssg, and DGCNN models to the cls/Bosphorus folder. For example, to test the untarget attack success rate on PointNet++Msg, you can use
 ```
-python Evaluate.py --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 10 --dist_function L2Loss_pt --model PointNet++Msg
+python Evaluate.py --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 10 --dist_function L2Loss --model PointNet++Msg
 ```
 
 

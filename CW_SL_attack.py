@@ -101,7 +101,7 @@ class reconstruct3D(torch.autograd.Function):
         ctx.Ap = Ap
         ctx.face_area = face_area
         end = time.time()
-        print(f"time taken for 3D reconstruction : {(end-start)*10**3:.03f}ms")
+        # print(f"time taken for 3D reconstruction : {(end-start)*10**3:.03f}ms")
         # showXYZ(xyz_rebuild[:,0:3].cpu().detach().numpy(), "imgs/xyz_rebuild.png")
         return xyz_rebuild
        
