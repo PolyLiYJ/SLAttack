@@ -88,14 +88,19 @@ python3 Test_CW_SL.py --dataset Bosphorus \
 
 ### To reproduce the attack success rate in our paper
 - Download the Bosphorus dataset at http://bosphorus.ee.boun.edu.tr/Home.aspx
-- Convert the dataset to text files, see dataset/readbnt.py. We use the farthest sampling from PointNet code to downsample the faces to 4000 points.
+- Convert the dataset to text files, see dataset/readbnt.py. We use the farthest point sampling from [pytorch3d](https://github.com/Omegaice/pytorch3d/blob/f130e4e1b53626524536e6df237ce97e9a0c1309/pytorch3d/ops/sample_farthest_points.py#L16) to downsample the faces to 4000 points.
+- Prepare the training and test dataset. We split the dataset into training dataset and test dataset by 0.7 and 0.3. The file names and labels are under dataset/test_farthest_sampled.csv and dataset/train_farthest_sampled.csv
+- Train the classification models through Train_classifier.py. We have uploaded the pretrained  PointNet, PointNet++Msg, PointNet++Ssg, and DGCNN  models to the cls/Bosphorus folder.
+```
+python Train_classifier.py --model PointNet
+```
 - Run untarget attack by
 ```
 python Evaluate.py --whether_1d --attack_lr 0.01 --num_iter 100 --early_break --binary_step 5 --dist_function L2Loss
 ```
 - Run the target attack by set the --whether_target parameter. It is suggested to set the device as cuda to accelerate the computation.
 ```
-python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 300 --binary_step 5 --dist_function L2Loss
+python Evaluate.py --whether_target --whether_1d --attack_lr 0.001 --num_iter 100 --binary_step 5 --dist_function L2Loss
 ```
 
 ### Evaluate on different models
@@ -105,13 +110,13 @@ python Evaluate.py --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 
 ```
 
 
-### Get the structured light image
+### Get the adversarial structured light image
 
 - To get fringe images (adversarial illumination) from the above generated adversarial point cloud. The clean point cloud and adversarial point cloud are needed.
 ```
 python get_adv_illumination --normal_pc test_face_data/person1.txt --adv_pc test_face_data/adv_person1_untargeted_L1Loss_5.txt --outfolder test_face_data/person1/adversarial_fringe
 ```
-
+- The generated adversarial structured light image is under test_face_data/person1/adversarial_fringe folder.
 
 ## Citation
 If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2205.13412">Physical-World Optical Adversarial Attacks on 3D Face Recognition</a>:

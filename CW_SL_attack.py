@@ -93,9 +93,8 @@ class reconstruct3D(torch.autograd.Function):
                                     Ap_np[2,3] * y_p_np[vc,uc] - Ap_np[0,3]])
                     point = np.matmul(np.linalg.inv(A),b.T)
                     xyz.append(point)
-        
-        
         xyz_rebuild = torch.tensor(np.array(xyz)).float().to(device) #[4200,3], [x,y,z,uc,vc]
+        
         ctx.save_for_backward(y_p, xyz_rebuild)
         ctx.Ac = Ac
         ctx.Ap = Ap
@@ -139,7 +138,7 @@ class reconstruct3D(torch.autograd.Function):
         # np.savetxt("output/grad_yp.txt", grad_yp.cpu().numpy()[38:39+90,100:100+57])
         return grad_yp.clone(), None, None, None
 
-# another way of 3D reconstruct
+# another way of 3D reconstruct, slow
 def rebuild3D(y_p_rebuild, face_area, Ac, Ap):
     # here we only caculate the gradient on vector b, because caculating the grad of A and b will confict on the y_p_rebuild's grad
     A = [[torch.cat(((torch.FloatTensor(Ac[0:2,0:3]).to(device) - torch.cat((torch.FloatTensor(Ac[2,0:3]).unsqueeze(0).to(device) *uc,
@@ -270,6 +269,7 @@ class CW:
         ycol = []
         
         #read data and compute corresponding camera and projector cooridates
+        # y_p is the projector horizon cooridinate
         for i in range(0,normalized_data.shape[0]):
             if np.isnan(Xws[i]) == False:
                 count_xy = count_xy+1;
@@ -313,8 +313,11 @@ class CW:
             dist_loss = torch.tensor(0.).to(device)
             pre_loss = 1e10 # used for early break
             
+            # get the absolute phase map through the y_p map
             phaX_rebuild = torch.tensor(y_p / self.width, dtype=torch.float).to(device)
             phaX_rebuild.requires_grad = False #[0,1]
+            
+            # add noise to the y_p map, which is the phase shift attack in our paper
             Noise = torch.zeros(np.shape(y_p), dtype=torch.float).to(device)
             Noise.requires_grad = True
             

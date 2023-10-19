@@ -130,7 +130,7 @@ if __name__ == "__main__":
         state_dict = torch.load(f'cls/{args.dataset}/{args.model}_model_on_{args.dataset}_best.pth')
         model.load_state_dict(state_dict)
     model.to(device)
-    train_dataset = Bosphorus_Dataset(csv_path="dataset/train_farthest_sampled_pure.csv")
+    train_dataset = Bosphorus_Dataset(csv_path="dataset/train_farthest_sampled.csv")
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True,drop_last=True)
     
     test_dataset = Bosphorus_Dataset(csv_path="dataset/test_farthest_sampled.csv")
