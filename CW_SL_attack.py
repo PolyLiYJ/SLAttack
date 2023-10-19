@@ -62,6 +62,7 @@ class reconstruct3D(torch.autograd.Function):
         h = int(h)
         start = time.time()
         index  = 0
+        '''
         for vc in range(x,x+h):
             for uc in range(y, y+w):        
                 if y_p[vc,uc]!=0:
@@ -76,14 +77,32 @@ class reconstruct3D(torch.autograd.Function):
                         xyz = point.t()
                     else:
                         xyz = torch.cat((xyz, point.t()),0)
-        xyz_rebuild = xyz.float().to(device)
+        xyz_rebuild = xyz.float().to(device)            
+        '''
+        y_p = y_p.cpu().numpy()
+        Ac = Ac.cpu().numpy()
+        Ap = Ap.cpu().numpy()
+        xyz = []
+        for vc in range(x,x+h):
+            for uc in range(y, y+w):        
+                if y_p[vc,uc]!=0:
+                    A = np.concatenate((Ac[0:2,0:3] - np.concatenate((np.expand_dims(Ac[2,0:3],0) *uc, np.expand_dims(Ac[2,0:3],0) *vc), axis = 0),
+                                np.expand_dims(Ap[0,0:3],0) - np.expand_dims(Ap[2,0:3],0)  * y_p[vc,uc]),axis=0)  
+                    b = np.array([Ac[2,3] * uc  - Ac[0,3], 
+                                    Ac[2,3] * vc- Ac[1,3],
+                                    Ap[2,3] * y_p[vc,uc] - Ap[0,3]])
+                    point = np.matmul(np.linalg.inv(A),b.T)
+                    xyz.append(point)
+        
+        
+        xyz_rebuild = torch.tensor(np.array(xyz)).float().to(device) #[4200,3], [x,y,z,uc,vc]
         ctx.save_for_backward(y_p, xyz_rebuild)
         ctx.Ac = Ac
         ctx.Ap = Ap
         ctx.face_area = face_area
         end = time.time()
         print(f"time taken for 3D reconstruction : {(end-start)*10**3:.03f}ms")
-        #showXYZ(xyz_rebuild[:,0:3].cpu().detach().numpy(), "imgs/xyz_rebuild.png")
+        showXYZ(xyz_rebuild[:,0:3].cpu().detach().numpy(), "imgs/xyz_rebuild.png")
         return xyz_rebuild
        
        

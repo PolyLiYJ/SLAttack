@@ -111,9 +111,6 @@ python Evaluate.py --whether_1d --attack_lr 0.001 --num_iter 1000 --binary_step 
 ```
 python get_adv_illumination --normal_pc test_face_data/person1.txt --adv_pc test_face_data/adv_person1_untargeted_L1Loss_5.txt --outfolder test_face_data/person1/adversarial_fringe
 ```
-### Todo
-
-- Accelerate the differential 3D reconstruction function for-loops by using parallel computing on GPU and C++. (At present, it needs about 40s for 1024 points reconstruction.)
 
 
 ## Citation
