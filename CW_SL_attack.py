@@ -79,18 +79,18 @@ class reconstruct3D(torch.autograd.Function):
                         xyz = torch.cat((xyz, point.t()),0)
         xyz_rebuild = xyz.float().to(device)            
         '''
-        y_p = y_p.cpu().numpy()
-        Ac = Ac.cpu().numpy()
-        Ap = Ap.cpu().numpy()
+        y_p_np = y_p.cpu().numpy()
+        Ac_np = Ac.cpu().numpy()
+        Ap_np = Ap.cpu().numpy()
         xyz = []
         for vc in range(x,x+h):
             for uc in range(y, y+w):        
-                if y_p[vc,uc]!=0:
-                    A = np.concatenate((Ac[0:2,0:3] - np.concatenate((np.expand_dims(Ac[2,0:3],0) *uc, np.expand_dims(Ac[2,0:3],0) *vc), axis = 0),
-                                np.expand_dims(Ap[0,0:3],0) - np.expand_dims(Ap[2,0:3],0)  * y_p[vc,uc]),axis=0)  
-                    b = np.array([Ac[2,3] * uc  - Ac[0,3], 
-                                    Ac[2,3] * vc- Ac[1,3],
-                                    Ap[2,3] * y_p[vc,uc] - Ap[0,3]])
+                if y_p_np[vc,uc]!=0:
+                    A = np.concatenate((Ac_np[0:2,0:3] - np.concatenate((np.expand_dims(Ac_np[2,0:3],0) *uc, np.expand_dims(Ac_np[2,0:3],0) *vc), axis = 0),
+                                np.expand_dims(Ap_np[0,0:3],0) - np.expand_dims(Ap_np[2,0:3],0)  * y_p_np[vc,uc]),axis=0)  
+                    b = np.array([Ac_np[2,3] * uc  - Ac_np[0,3], 
+                                    Ac_np[2,3] * vc- Ac_np[1,3],
+                                    Ap_np[2,3] * y_p_np[vc,uc] - Ap_np[0,3]])
                     point = np.matmul(np.linalg.inv(A),b.T)
                     xyz.append(point)
         
@@ -102,7 +102,7 @@ class reconstruct3D(torch.autograd.Function):
         ctx.face_area = face_area
         end = time.time()
         print(f"time taken for 3D reconstruction : {(end-start)*10**3:.03f}ms")
-        showXYZ(xyz_rebuild[:,0:3].cpu().detach().numpy(), "imgs/xyz_rebuild.png")
+        # showXYZ(xyz_rebuild[:,0:3].cpu().detach().numpy(), "imgs/xyz_rebuild.png")
         return xyz_rebuild
        
        
@@ -431,7 +431,7 @@ class CW:
                         o_best_yp_rebuild = y_p_rebuild.detach().cpu().numpy()
 
                 # mesh(face_area, pha_wrapped.cpu().detach().numpy())
-                if iteration % 1 == 0:
+                if iteration % 20 == 0:
                     print("binary step:", binary_step, "  iteration:", iteration, "current weight:", current_weight[0])
                     print("loss: %2.5f, dist loss: %2.5f, adv_loss: %2.5f , pred: %d" % ( loss.item(),dist_loss.item(), adv_loss.item(),  pred_val))
                     
